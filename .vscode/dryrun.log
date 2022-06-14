@@ -1,0 +1,53 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory '/home/parallels/Desktop/assign2-2'
+ 
+flex src/lexer.ll
+bison src/parser.yy
+g++ -g -w -c parser.tab.cc -o obj/parser.tab.o -std=c++17 -I include -I. -Iinclude/ast
+g++ -g -w -std=c++17 -fPIE -c src/else_statement.cpp -o obj/else_statement.o -I include -I. -Iinclude/ast
+g++ -g -w -std=c++17 -fPIE -c src/parameter.cpp -o obj/parameter.o -I include -I. -Iinclude/ast
+g++ -g -w -std=c++17 -fPIE -c src/expression.cpp -o obj/expression.o -I include -I. -Iinclude/ast
+g++ -g -w -std=c++17 -fPIE -c src/main.cpp -o obj/main.o -I include -I. -Iinclude/ast
+g++ -g -w -std=c++17 -fPIE -c src/symbol_table.cpp -o obj/symbol_table.o -I include -I. -Iinclude/ast
+g++ -g -w -std=c++17 -fPIE -c src/alloc_expression.cpp -o obj/alloc_expression.o -I include -I. -Iinclude/ast
+g++ -g -w -std=c++17 -fPIE -c src/method_body.cpp -o obj/method_body.o -I include -I. -Iinclude/ast
+g++ -g -w -std=c++17 -fPIE -c src/class_declaration.cpp -o obj/class_declaration.o -I include -I. -Iinclude/ast
+g++ -g -w -std=c++17 -fPIE -c src/arith_expression.cpp -o obj/arith_expression.o -I include -I. -Iinclude/ast
+g++ -g -w -std=c++17 -fPIE -c src/goal.cpp -o obj/goal.o -I include -I. -Iinclude/ast
+g++ -g -w -std=c++17 -fPIE -c src/statement.cpp -o obj/statement.o -I include -I. -Iinclude/ast
+g++ -g -w -std=c++17 -fPIE -c src/compare_expression.cpp -o obj/compare_expression.o -I include -I. -Iinclude/ast
+g++ -g -w -std=c++17 -fPIE -c src/type.cpp -o obj/type.o -I include -I. -Iinclude/ast
+g++ -g -w -std=c++17 -fPIE -c src/identifier.cpp -o obj/identifier.o -I include -I. -Iinclude/ast
+g++ -g -w -std=c++17 -fPIE -c src/logic_expression.cpp -o obj/logic_expression.o -I include -I. -Iinclude/ast
+g++ -g -w -std=c++17 -fPIE -c src/record.cpp -o obj/record.o -I include -I. -Iinclude/ast
+g++ -g -w -std=c++17 -fPIE -c src/variable.cpp -o obj/variable.o -I include -I. -Iinclude/ast
+g++ -g -w -std=c++17 -fPIE -c src/while_statement.cpp -o obj/while_statement.o -I include -I. -Iinclude/ast
+g++ -g -w -std=c++17 -fPIE -c src/program.cpp -o obj/program.o -I include -I. -Iinclude/ast
+g++ -g -w -std=c++17 -fPIE -c src/assign_statement.cpp -o obj/assign_statement.o -I include -I. -Iinclude/ast
+g++ -g -w -std=c++17 -fPIE -c src/ir.cpp -o obj/ir.o -I include -I. -Iinclude/ast
+g++ -g -w -std=c++17 -fPIE -c src/main_class.cpp -o obj/main_class.o -I include -I. -Iinclude/ast
+g++ -g -w -std=c++17 -fPIE -c src/class_extends_declaration.cpp -o obj/class_extends_declaration.o -I include -I. -Iinclude/ast
+g++ -g -w -std=c++17 -fPIE -c src/irGen.cpp -o obj/irGen.o -I include -I. -Iinclude/ast
+g++ -g -w -std=c++17 -fPIE -c src/declarations.cpp -o obj/declarations.o -I include -I. -Iinclude/ast
+g++ -g -w -std=c++17 -fPIE -c src/print_statement.cpp -o obj/print_statement.o -I include -I. -Iinclude/ast
+g++ -g -w -std=c++17 -fPIE -c src/return.cpp -o obj/return.o -I include -I. -Iinclude/ast
+g++ -g -w -std=c++17 -fPIE -c src/array_assign_statement.cpp -o obj/array_assign_statement.o -I include -I. -Iinclude/ast
+g++ -g -w -std=c++17 -fPIE -c src/array_alloc_expression.cpp -o obj/array_alloc_expression.o -I include -I. -Iinclude/ast
+g++ -g -w -std=c++17 -fPIE -c src/array_search_expression.cpp -o obj/array_search_expression.o -I include -I. -Iinclude/ast
+g++ -g -w -std=c++17 -fPIE -c src/if_statement.cpp -o obj/if_statement.o -I include -I. -Iinclude/ast
+g++ -g -w -std=c++17 -fPIE -c src/node.cpp -o obj/node.o -I include -I. -Iinclude/ast
+g++ -g -w -std=c++17 -fPIE -c src/unary_expression.cpp -o obj/unary_expression.o -I include -I. -Iinclude/ast
+g++ -g -w -std=c++17 -fPIE -c src/variable_declaration.cpp -o obj/variable_declaration.o -I include -I. -Iinclude/ast
+g++ -g -w -std=c++17 -fPIE -c src/expression_list.cpp -o obj/expression_list.o -I include -I. -Iinclude/ast
+g++ -g -w -std=c++17 -fPIE -c src/array_length_expression.cpp -o obj/array_length_expression.o -I include -I. -Iinclude/ast
+g++ -g -w -std=c++17 -fPIE -c src/method.cpp -o obj/method.o -I include -I. -Iinclude/ast
+g++ -g -w -std=c++17 -fPIE -c src/primary_expression.cpp -o obj/primary_expression.o -I include -I. -Iinclude/ast
+g++ -g -w -std=c++17 -fPIE -c src/formal_parameter.cpp -o obj/formal_parameter.o -I include -I. -Iinclude/ast
+g++ -g -w -std=c++17 -fPIE -c src/formal_parameter_list.cpp -o obj/formal_parameter_list.o -I include -I. -Iinclude/ast
+g++ -g -w -std=c++17 -fPIE -c src/scope.cpp -o obj/scope.o -I include -I. -Iinclude/ast
+g++ -g -w -std=c++17 -fPIE -c src/method_declaration.cpp -o obj/method_declaration.o -I include -I. -Iinclude/ast
+g++ -g -w -std=c++17 -fPIE -c src/st_class.cpp -o obj/st_class.o -I include -I. -Iinclude/ast
+g++ -g -w -std=c++17 -fPIE -c src/cfg.cpp -o obj/cfg.o -I include -I. -Iinclude/ast
+g++ -g -w -ocompiler  lex.yy.c -fPIE ./obj/else_statement.o ./obj/parameter.o ./obj/expression.o ./obj/main.o ./obj/symbol_table.o ./obj/alloc_expression.o ./obj/method_body.o ./obj/class_declaration.o ./obj/arith_expression.o ./obj/goal.o ./obj/statement.o ./obj/compare_expression.o ./obj/type.o ./obj/identifier.o ./obj/logic_expression.o ./obj/record.o ./obj/variable.o ./obj/while_statement.o ./obj/program.o ./obj/assign_statement.o ./obj/ir.o ./obj/main_class.o ./obj/class_extends_declaration.o ./obj/irGen.o ./obj/declarations.o ./obj/print_statement.o ./obj/return.o ./obj/array_assign_statement.o ./obj/array_alloc_expression.o ./obj/array_search_expression.o ./obj/if_statement.o ./obj/node.o ./obj/unary_expression.o ./obj/variable_declaration.o ./obj/expression_list.o ./obj/array_length_expression.o ./obj/method.o ./obj/primary_expression.o ./obj/formal_parameter.o ./obj/formal_parameter_list.o ./obj/scope.o ./obj/method_declaration.o ./obj/st_class.o ./obj/cfg.o -I include -I. -Iinclude/ast -std=c++17 obj/parser.tab.o
+make: Leaving directory '/home/parallels/Desktop/assign2-2'
+ 

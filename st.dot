@@ -1,0 +1,30 @@
+graph {
+label="Symbol Table";
+labelloc="t";
+
+node [shape=rect, fontname=Arial, width=5];
+
+n0 [label=<<U><B>Program</B></U><BR/><BR/>
+name: Test; record: Class; type: Test<BR/>
+name: RecursiveSum; record: Class; type: RecursiveSum<BR/>
+>];
+n0 -- n1;
+n1 [label=<<U><B>Class: RecursiveSum</B></U><BR/><BR/>
+name: main; record: Method; type: void<BR/>
+name: this; record: Variable; type: RecursiveSum<BR/>
+>];
+n1 -- n2;
+n2 [label=<<U><B>Method: main</B></U><BR/><BR/>
+name: a; record: Parameter; type: String[]<BR/>
+>];
+n0 -- n3;
+n3 [label=<<U><B>Class: Test</B></U><BR/><BR/>
+name: Sum; record: Method; type: int<BR/>
+name: this; record: Variable; type: Test<BR/>
+>];
+n3 -- n4;
+n4 [label=<<U><B>Method: Sum</B></U><BR/><BR/>
+name: sum; record: Variable; type: int<BR/>
+name: num; record: Parameter; type: int<BR/>
+>];
+}

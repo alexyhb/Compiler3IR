@@ -1,0 +1,936 @@
+make all --print-data-base --no-builtin-variables --no-builtin-rules --question
+make: *** No rule to make target 'all'.  Stop.
+
+# GNU Make 4.2.1
+# Built for x86_64-pc-linux-gnu
+# Copyright (C) 1988-2016 Free Software Foundation, Inc.
+# License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+# This is free software: you are free to change and redistribute it.
+# There is NO WARRANTY, to the extent permitted by law.
+
+# Make data base, printed on Tue Jun  7 21:32:00 2022
+
+# Variables
+
+# 'override' directive
+GNUMAKEFLAGS := 
+# automatic
+<D = $(patsubst %/,%,$(dir $<))
+# automatic
+?F = $(notdir $?)
+# environment
+DESKTOP_SESSION = ubuntu
+# default
+.SHELLFLAGS := -c
+# makefile (from 'Makefile', line 5)
+OBJ := ./obj/else_statement.o ./obj/parameter.o ./obj/expression.o ./obj/main.o ./obj/symbol_table.o ./obj/alloc_expression.o ./obj/method_body.o ./obj/class_declaration.o ./obj/arith_expression.o ./obj/goal.o ./obj/statement.o ./obj/compare_expression.o ./obj/type.o ./obj/identifier.o ./obj/logic_expression.o ./obj/record.o ./obj/variable.o ./obj/while_statement.o ./obj/program.o ./obj/assign_statement.o ./obj/ir.o ./obj/main_class.o ./obj/class_extends_declaration.o ./obj/irGen.o ./obj/declarations.o ./obj/print_statement.o ./obj/return.o ./obj/array_assign_statement.o ./obj/array_alloc_expression.o ./obj/array_search_expression.o ./obj/if_statement.o ./obj/node.o ./obj/unary_expression.o ./obj/variable_declaration.o ./obj/expression_list.o ./obj/array_length_expression.o ./obj/method.o ./obj/primary_expression.o ./obj/formal_parameter.o ./obj/formal_parameter_list.o ./obj/scope.o ./obj/method_declaration.o ./obj/st_class.o ./obj/cfg.o
+# environment
+XDG_SESSION_CLASS = user
+# makefile (from 'Makefile', line 3)
+SRC := ./src/else_statement.cpp ./src/parameter.cpp ./src/expression.cpp ./src/main.cpp ./src/symbol_table.cpp ./src/alloc_expression.cpp ./src/method_body.cpp ./src/class_declaration.cpp ./src/arith_expression.cpp ./src/goal.cpp ./src/statement.cpp ./src/compare_expression.cpp ./src/type.cpp ./src/identifier.cpp ./src/logic_expression.cpp ./src/record.cpp ./src/variable.cpp ./src/while_statement.cpp ./src/program.cpp ./src/assign_statement.cpp ./src/ir.cpp ./src/main_class.cpp ./src/class_extends_declaration.cpp ./src/irGen.cpp ./src/declarations.cpp ./src/print_statement.cpp ./src/return.cpp ./src/array_assign_statement.cpp ./src/array_alloc_expression.cpp ./src/array_search_expression.cpp ./src/if_statement.cpp ./src/node.cpp ./src/unary_expression.cpp ./src/variable_declaration.cpp ./src/expression_list.cpp ./src/array_length_expression.cpp ./src/method.cpp ./src/primary_expression.cpp ./src/formal_parameter.cpp ./src/formal_parameter_list.cpp ./src/scope.cpp ./src/method_declaration.cpp ./src/st_class.cpp ./src/cfg.cpp
+# environment
+SNAP_COMMON = /var/snap/code/common
+# environment
+XDG_SESSION_TYPE = x11
+# environment
+VSCODE_LOG_NATIVE = false
+# automatic
+?D = $(patsubst %/,%,$(dir $?))
+# environment
+IM_CONFIG_PHASE = 1
+# automatic
+@D = $(patsubst %/,%,$(dir $@))
+# environment
+XAUTHORITY = /run/user/1000/gdm/Xauthority
+# environment
+GDMSESSION = ubuntu
+# environment
+XMODIFIERS = @im=ibus
+# makefile
+CURDIR := /home/parallels/Desktop/assign2-2
+# makefile
+SHELL = /bin/sh
+# environment
+SNAP_DATA = /var/snap/code/97
+# environment
+VSCODE_NLS_CONFIG = {"locale":"en-us","availableLanguages":{},"_languagePackSupport":true}
+# environment
+JOURNAL_STREAM = 8:52489
+# makefile (from 'Makefile', line 2)
+CFLAGS := -I -I -I -I -I -I -I.
+# environment
+XDG_CONFIG_DIRS = /etc/xdg/xdg-ubuntu:/etc/xdg
+# environment
+SNAP_INSTANCE_NAME = code
+# environment
+SNAP_ARCH = amd64
+# makefile (from 'Makefile', line 1)
+MAKEFILE_LIST :=  Makefile
+# automatic
+@F = $(notdir $@)
+# environment
+GIO_LAUNCHED_DESKTOP_FILE = /var/lib/snapd/desktop/applications/code_code.desktop
+# environment
+USERNAME = parallels
+# environment
+XDG_DATA_DIRS = /usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop
+# environment
+DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus
+# environment
+VSCODE_VERBOSE_LOGGING = true
+# environment
+_ = /snap/code/97/usr/share/code/code
+# environment
+MANAGERPID = 2095
+# environment
+LESSOPEN = | /usr/bin/lesspipe %s
+# environment
+VSCODE_CWD = /home/parallels
+# environment
+GSETTINGS_SCHEMA_DIR = /snap/code/97/usr/share/glib-2.0/schemas
+# default
+MAKE_HOST := x86_64-pc-linux-gnu
+# environment
+PATH = /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+# environment
+GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
+# environment
+SESSION_MANAGER = local/parallels-Parallels-Virtual-Platform:@/tmp/.ICE-unix/2269,unix/parallels-Parallels-Virtual-Platform:/tmp/.ICE-unix/2269
+# environment
+XDG_RUNTIME_DIR = /run/user/1000
+# environment
+GDK_PIXBUF_MODULE_FILE = /home/parallels/snap/code/common/.cache/gdk-pixbuf-loaders.cache
+# environment
+SNAP = /snap/code/97
+# environment
+SNAP_VERSION = c3511e6c
+# environment
+XDG_MENU_PREFIX = gnome-
+# environment
+VSCODE_LOG_STACK = false
+# environment
+DISABLE_WAYLAND = 1
+# environment
+ELECTRON_RUN_AS_NODE = 1
+# environment
+INVOCATION_ID = 455cf53aef754b24b8c021983dcd9a9f
+# environment
+GDK_PIXBUF_MODULEDIR = /snap/code/97/usr/lib/x86_64-linux-gnu/gdk-pixbuf-2.0/2.10.0/loaders
+# default
+.FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
+# environment
+LS_COLORS = 
+# environment
+XDG_SESSION_DESKTOP = ubuntu
+# environment
+SSH_AUTH_SOCK = /run/user/1000/keyring/ssh
+# environment
+GIO_LAUNCHED_DESKTOP_FILE_PID = 694497
+# automatic
+%F = $(notdir $%)
+# environment
+DISPLAY = :0
+# environment
+VSCODE_PIPE_LOGGING = true
+# environment
+SNAP_INSTANCE_KEY = 
+# environment
+PWD = /home/parallels/Desktop/assign2-2
+# default
+.LOADED := 
+# environment
+SSH_AGENT_PID = 2235
+# environment
+ORIGINAL_XDG_CURRENT_DESKTOP = ubuntu:GNOME
+# environment
+GTK_MODULES = gail:atk-bridge
+# environment
+VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
+# environment
+HOME = /home/parallels
+# environment
+LESSCLOSE = /usr/bin/lesspipe %s %s
+# environment
+VSCODE_CLI = 1
+# environment
+VSCODE_CODE_CACHE_PATH = /home/parallels/.config/Code/CachedData/c3511e6c69bb39013c4a4b7b9566ec1ca73fc4d5
+# environment
+LOGNAME = parallels
+# environment
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
+# environment
+SNAP_LIBRARY_PATH = /var/lib/snapd/lib/gl:/var/lib/snapd/lib/gl32:/var/lib/snapd/void
+# environment
+SNAP_CONTEXT = inBmDpmjqUkM_GC0nKsKSZ7g1Ku_TlaM1Z8PiBli0RyCKIqxUPxV
+# environment
+ELECTRON_NO_ATTACH_CONSOLE = 1
+# environment
+SNAP_USER_COMMON = /home/parallels/snap/code/common
+# environment
+VSCODE_HANDLES_UNCAUGHT_ERRORS = true
+# environment
+GNOME_DESKTOP_SESSION_ID = this-is-deprecated
+# automatic
+^D = $(patsubst %/,%,$(dir $^))
+# environment
+MAKELEVEL := 0
+# environment
+SNAP_REAL_HOME = /home/parallels
+# default
+MAKE = $(MAKE_COMMAND)
+# default
+MAKECMDGOALS := all
+# environment
+QT_IM_MODULE = ibus
+# environment
+SNAP_USER_DATA = /home/parallels/snap/code/97
+# environment
+SHLVL = 0
+# environment
+GNOME_SHELL_SESSION_MODE = ubuntu
+# environment
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-e90a0885-6ec9-4b9d-ad33-09f348b91694.sock
+# default
+MAKE_VERSION := 4.2.1
+# environment
+USER = parallels
+# environment
+SNAP_REVISION = 97
+# makefile
+.DEFAULT_GOAL := compiler
+# makefile (from 'Makefile', line 6)
+INCLUDE := -I include -I. -Iinclude/ast
+# environment
+XDG_CURRENT_DESKTOP = Unity
+# automatic
+%D = $(patsubst %/,%,$(dir $%))
+# default
+MAKE_COMMAND := make
+# default
+.VARIABLES := 
+# automatic
+*F = $(notdir $*)
+# environment
+VSCODE_IPC_HOOK = /run/user/1000/vscode-ee9caf69-1.67.2-main.sock
+# environment
+BAMF_DESKTOP_FILE_HINT = /var/lib/snapd/desktop/applications/code_code.desktop
+# makefile
+MAKEFLAGS = pqrR
+# environment
+MFLAGS = -pqrR
+# automatic
+*D = $(patsubst %/,%,$(dir $*))
+# automatic
++D = $(patsubst %/,%,$(dir $+))
+# environment
+GDK_BACKEND = x11
+# automatic
++F = $(notdir $+)
+# environment
+QT_ACCESSIBILITY = 1
+# 'override' directive
+.SHELLSTATUS := 0
+# default
+MAKEFILES := 
+# environment
+SNAP_COOKIE = inBmDpmjqUkM_GC0nKsKSZ7g1Ku_TlaM1Z8PiBli0RyCKIqxUPxV
+# automatic
+<F = $(notdir $<)
+# makefile (from 'Makefile', line 7)
+CXX := g++
+# environment
+SNAP_NAME = code
+# environment
+LC_ALL = C
+# environment
+GJS_DEBUG_TOPICS = JS ERROR;JS LOG
+# automatic
+^F = $(notdir $^)
+# makefile (from 'Makefile', line 4)
+DEPS := ./include/expression_list.h ./include/variable_declaration.h ./include/class_extends_declaration.h ./include/goal.h ./include/symbol_table.h ./include/cfg.h ./include/else_statement.h ./include/unary_expression.h ./include/ir.h ./include/statement.h ./include/nodes.h ./include/expression.h ./include/if_statement.h ./include/class_declaration.h ./include/ast/node.h ./include/record.h ./include/declarations.h ./include/program.h ./include/method.h ./include/type.h ./include/identifier.h ./include/irGen.h ./include/assign_statement.h ./include/formal_parameter_list.h ./include/method_body.h ./include/variable.h ./include/array_length_expression.h ./include/while_statement.h ./include/logic_expression.h ./include/main.h ./include/arith_expression.h ./include/array_search_expression.h ./include/primary_expression.h ./include/array_alloc_expression.h ./include/print_statement.h ./include/formal_parameter.h ./include/method_declaration.h ./include/main_class.h ./include/return.h ./include/parameter.h ./include/scope.h ./include/alloc_expression.h ./include/compare_expression.h ./include/st_class.h ./include/array_assign_statement.h
+# default
+SUFFIXES := 
+# environment
+SNAP_REEXEC = 
+# environment
+CHROME_DESKTOP = code-url-handler.desktop
+# environment
+WINDOWPATH = 2
+# default
+.INCLUDE_DIRS = /usr/include /usr/local/include /usr/include
+# environment
+GJS_DEBUG_OUTPUT = stderr
+# default
+.RECIPEPREFIX := 
+# environment
+LANG = C
+# environment
+VSCODE_PID = 694543
+# variable set hash-table stats:
+# Load=127/1024=12%, Rehash=0, Collisions=24/169=14%
+
+# Pattern-specific Variable Values
+
+# No pattern-specific variable values.
+
+# Directories
+
+# . (device 2053, inode 2238783): 9 files, no impossibilities.
+# src (device 2053, inode 2238864): No files, no impossibilities so far.
+
+# 9 files, no impossibilities in 2 directories.
+
+# Implicit Rules
+
+obj/%.o: src/%.cpp obj/parser.tab.o
+#  recipe to execute (from 'Makefile', line 11):
+	$(CXX) -g -w -std=c++17 -fPIE -c $< -o $@ $(INCLUDE)
+
+# 1 implicit rules, 0 (0.0%) terminal.
+
+# Files
+
+# Not a target:
+include/array_alloc_expression.h:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+include/identifier.h:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+include/variable_declaration.h:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+include/print_statement.h:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/alloc_expression.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+parser.tab.cc: src/parser.yy
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 23):
+		bison src/parser.yy
+
+cfg:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 18):
+		 dot -Tpdf cfg.dot -ocfg.pdf
+
+# Not a target:
+obj/formal_parameter.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/variable.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+include/cfg.h:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+all:
+#  Command line target.
+#  Implicit rule search has been done.
+#  File does not exist.
+#  File has not been updated.
+
+# Not a target:
+include/main_class.h:
+ 
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+include/logic_expression.h:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/unary_expression.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/primary_expression.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+include/type.h:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+include/compare_expression.h:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+include/irGen.h:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/arith_expression.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/expression_list.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+include/assign_statement.h:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+include/return.h:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/statement.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+src/lexer.ll:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+include/method_declaration.h:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/main.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/array_search_expression.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+tree:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 14):
+		 dot -Tpdf ast.dot -otree.pdf
+
+# Not a target:
+include/alloc_expression.h:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+Makefile:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-05 11:15:56
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+include/formal_parameter.h:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/record.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+include/ast/node.h:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/symbol_table.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/st_class.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/method_body.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+include/unary_expression.h:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/declarations.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+include/primary_expression.h:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+obj/parser.tab.o: parser.tab.cc
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 21):
+		g++ -g -w -c $< -o $@ -std=c++17 $(INCLUDE)
+
+# Not a target:
+include/ir.h:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/node.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/parameter.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/scope.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+include/arith_expression.h:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+include/expression_list.h:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+include/nodes.h:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+ 
+# Not a target:
+obj/array_length_expression.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+include/statement.h:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/ir.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/else_statement.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+src/parser.yy:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+include/main.h:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/class_declaration.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+include/array_search_expression.h:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+include/method.h:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/program.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+include/record.h:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+include/symbol_table.h:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+include/st_class.h:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/expression.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/while_statement.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+lex.yy.c: src/lexer.ll
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 25):
+		flex src/lexer.ll
+
+# Not a target:
+.DEFAULT:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+include/method_body.h:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+include/declarations.h:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/goal.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/if_statement.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+include/else_statement.h:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+ 
+# Not a target:
+include/parameter.h:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/formal_parameter_list.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+include/scope.h:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+compiler: lex.yy.c obj/parser.tab.o obj/else_statement.o obj/parameter.o obj/expression.o obj/main.o obj/symbol_table.o obj/alloc_expression.o obj/method_body.o obj/class_declaration.o obj/arith_expression.o obj/goal.o obj/statement.o obj/compare_expression.o obj/type.o obj/identifier.o obj/logic_expression.o obj/record.o obj/variable.o obj/while_statement.o obj/program.o obj/assign_statement.o obj/ir.o obj/main_class.o obj/class_extends_declaration.o obj/irGen.o obj/declarations.o obj/print_statement.o obj/return.o obj/array_assign_statement.o obj/array_alloc_expression.o obj/array_search_expression.o obj/if_statement.o obj/node.o obj/unary_expression.o obj/variable_declaration.o obj/expression_list.o obj/array_length_expression.o obj/method.o obj/primary_expression.o obj/formal_parameter.o obj/formal_parameter_list.o obj/scope.o obj/method_declaration.o obj/st_class.o obj/cfg.o include/expression_list.h include/variable_declaration.h include/class_extends_declaration.h include/goal.h include/symbol_table.h include/cfg.h include/else_statement.h include/unary_expression.h include/ir.h include/statement.h include/nodes.h include/expression.h include/if_statement.h include/class_declaration.h include/ast/node.h include/record.h include/declarations.h include/program.h include/method.h include/type.h include/identifier.h include/irGen.h include/assign_statement.h include/formal_parameter_list.h include/method_body.h include/variable.h include/array_length_expression.h include/while_statement.h include/logic_expression.h include/main.h include/arith_expression.h include/array_search_expression.h include/primary_expression.h include/array_alloc_expression.h include/print_statement.h include/formal_parameter.h include/method_declaration.h include/main_class.h include/return.h include/parameter.h include/scope.h include/alloc_expression.h include/compare_expression.h include/st_class.h include/array_assign_statement.h
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 9):
+	g++ -g -w -ocompiler  lex.yy.c -fPIE $(OBJ) $(INCLUDE) -std=c++17 obj/parser.tab.o
+
+# Not a target:
+obj/array_assign_statement.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+clean:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 27):
+		rm -f obj/*; rm parser.tab.cc parser.tab.hh; rm lex.yy.c  parser.tab.o compiler
+
+# Not a target:
+include/array_length_expression.h:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/compare_expression.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/class_extends_declaration.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/logic_expression.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/method.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+include/class_declaration.h:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/array_alloc_expression.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/identifier.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+include/program.h:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/variable_declaration.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+ 
+#  File has not been updated.
+
+# Not a target:
+obj/print_statement.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+include/expression.h:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+include/while_statement.h:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/cfg.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/main_class.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+include/goal.h:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+include/if_statement.h:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/type.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+include/formal_parameter_list.h:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+st:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 16):
+		 dot -Tpdf st.dot -ost.pdf
+
+# Not a target:
+obj/irGen.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+include/array_assign_statement.h:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+include/variable.h:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/assign_statement.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/return.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+include/class_extends_declaration.h:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/method_declaration.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# files hash-table stats:
+# Load=103/1024=10%, Rehash=0, Collisions=17/210=8%
+# VPATH Search Paths
+
+# No 'vpath' search paths.
+
+# No general ('VPATH' variable) search path.
+
+ 
+# strcache buffers: 1 (0) / strings = 115 / storage = 2130 B / avg = 18 B
+# current buf: size = 8162 B / used = 2130 B / count = 115 / avg = 18 B
+
+# strcache performance: lookups = 132 / hit rate = 12%
+# hash-table stats:
+# Load=115/8192=1%, Rehash=0, Collisions=1/132=1%
+# Finished Make data base on Tue Jun  7 21:32:00 2022
+
+ 

@@ -1,0 +1,8 @@
+digraph {
+graph [splines=ortho]
+compound=true;
+subgraph "clusterRecursiveSum" {
+label = "block_1";
+5[shape=box label="_t0 := new Test\nparam _t0\n"];
+}
+}
