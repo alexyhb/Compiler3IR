@@ -13,3 +13,10 @@ std::optional<string> ExpressionList::checkSemantics() {
 
     return parameter_type_list;
 }
+void* ExpressionList::genIR(BasicBlock* BB) {
+    LOG_INFO("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!ExpressionList override the GENIR, value="<<value<<"type:"<<type<< "children size"<< children.size());
+    for(auto &child: children){
+        child->genIR(BB);
+    }
+   
+}

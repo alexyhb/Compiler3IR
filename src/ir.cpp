@@ -158,9 +158,9 @@ MethodCallIr::MethodCallIr(Address *left, Address *right)
 
 void MethodCallIr::write(std::ostream &stream) const {
   if (this->result == nullptr)
-    stream << "call " << this->left << ", " << this->right;
+    stream << "call " << this->left << "("<< this->right<<")";
   else
-    stream << this->result << " := call " << this->left << ", " << this->right;
+    stream << this->result << " := call " << this->left << "(" << this->right<<")";
 }
 
 ReturnIr::ReturnIr(Address *operand)

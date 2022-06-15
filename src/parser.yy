@@ -231,7 +231,7 @@ Expression : PrimaryExpression                                                { 
            | ArithExpression                                                  { $$ = $1; }
            | ArraySearchExpression                                            { $$ = $1; }
            | ArrayLengthExpression                                            { $$ = $1; }
-           | Expression DOT Identifier LPARENTHESE RPARENTHESE                { $$ = $1; $$->children.push_back($3); }
+           | Expression DOT Identifier LPARENTHESE RPARENTHESE                { $$ = $1; $$->children.push_back($3);  }
            | Expression DOT Identifier LPARENTHESE ExpressionList RPARENTHESE { $$ = $1; $$->children.push_back($3); $$->children.push_back($5); }
            ;
 

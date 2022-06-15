@@ -9,8 +9,36 @@ std::optional<string> Expression::generateST() {
     return std::nullopt;
 }
 
-void* Expression::genIR(BasicBlock* BB) {
-    return children.at(0)->genIR(BB);
+void* Expression::genIR(BasicBlock* currentBlock) {
+    size_t size = children.size();
+    string type = this->children.at(0)->getType();
+
+    LOG_INFO("Size of experession : " << children.size());
+    if(size==3 && (type == "AllocExpression"|| type == "PrimaryExpression"||type == "keyword")){
+         LOG_INFO("Method call 1 : ");
+        
+        Address* result = (Address*)children.at(0)->genIR(currentBlock);
+        Address* addrLhs = (Address*)children.at(1)->genIR(currentBlock);
+        Address* addrRhs =(Address*)children.at(2)->genIR(currentBlock);
+        ThreeAddressCode* in = new MethodCallIr(result,addrLhs,addrRhs);
+    currentBlock->add_code(in);
+
+    }else if(size == 2 &&(type == "AllocExpression"|| type == "PrimaryExpression"||type == "keyword")){
+         LOG_INFO("Method call 2: ");
+        
+        Address* addrLhs = (Address*)children.at(0)->genIR(currentBlock);
+        Address* addrRhs =(Address*)children.at(1)->genIR(currentBlock);
+        ThreeAddressCode* in = new MethodCallIr(addrLhs,addrRhs);
+    currentBlock->add_code(in);
+
+    }else
+    {
+
+        for(auto&child:children)
+        {
+        child->genIR(currentBlock);
+        }
+    }
 }
 std::optional<string> Expression::checkSemantics() {
     string class_name;

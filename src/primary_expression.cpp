@@ -20,7 +20,7 @@ void* PrimaryExpression::genIR(BasicBlock *currentBlock)
     }else{
        // LOG_INFO(" PrimaryExpression size=0 type = "<<type<<", value = "<<value);
         result =  Address::getAddressFromType(type,value);
-        
+        return (void*)result;
     }
     //  Address* addrLhs = (Address*)children.at(0)->genIR(currentBlock);
     // //Address* addrRhs = (Address*)children.at(1)->genIR(currentBlock);
