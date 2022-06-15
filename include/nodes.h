@@ -25,12 +25,14 @@
 #include "arith_expression.h"
 #include "array_search_expression.h"
 #include "array_length_expression.h"
+#include "method_call.h"
 
 #include "primary_expression.h"
 #include "array_alloc_expression.h"
 #include "alloc_expression.h"
 #include "unary_expression.h"
 
+#
 #include "statement.h"
 #include "assign_statement.h"
 #include "array_assign_statement.h"

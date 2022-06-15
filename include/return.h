@@ -11,6 +11,8 @@ public:
 
     std::optional<std::string> generateST() final;
     std::optional<std::string> checkSemantics() override;
+    void* genIR(BasicBlock* BB);
+
 };
 
 #endif

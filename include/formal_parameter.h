@@ -8,6 +8,7 @@ public:
     FormalParameter();
     FormalParameter(std::string t, std::string v);
     ~FormalParameter() override = default;
+    void* genIR(BasicBlock* BB);
 
     std::optional<std::string> generateST() final;
 };

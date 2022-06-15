@@ -26,3 +26,28 @@ std::optional<string> Return::checkSemantics() {
 
     return std::nullopt;
 }
+void* Return::genIR(BasicBlock *currentBlock)
+{
+    LOG_INFO(" Return has override genIR function, type = "<<type<<", value = "<<value<<"size"<<children.size());
+    
+    Address* result = (Address*)children.at(0)->genIR(currentBlock);
+    ThreeAddressCode* in = new ReturnIr(result);
+    currentBlock->add_code(in);
+    // if(children.size()>0){
+    //    // LOG_INFO(" PrimaryExpression type = "<<type<<", value = "<<value);
+    //      return children.at(0)->genIR(currentBlock);
+
+        
+    // }else{
+    //    // LOG_INFO(" PrimaryExpression size=0 type = "<<type<<", value = "<<value);
+    //     result =  Address::getAddressFromType(type,value);
+        
+    // }
+    // //  Address* addrLhs = (Address*)children.at(0)->genIR(currentBlock);
+    // // //Address* addrRhs = (Address*)children.at(1)->genIR(currentBlock);
+    // // std::string operatorString = getValue();
+    // //  ThreeAddressCode* in = new ExpressionIr(addrLhs,nullptr,operatorString);
+    // //  currentBlock->add_code(in);
+    
+    // return (void*)result;
+}

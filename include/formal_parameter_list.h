@@ -8,6 +8,8 @@ public:
     FormalParameterList();
     FormalParameterList(std::string t, std::string v);
     ~FormalParameterList() override = default;
+    void* genIR(BasicBlock* BB);
+
 };
 
 #endif

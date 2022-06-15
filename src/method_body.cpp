@@ -16,5 +16,5 @@ void* MethodBody::genIR(BasicBlock* BB) {
     for (const auto &child : this->children) {
             child->genIR(BB);
     }
-    return nullptr;
+   
 }

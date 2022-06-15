@@ -5,7 +5,9 @@ Declarations::Declarations(std::string t, std::string v) : Node(std::move(t), st
 void* Declarations::genIR(BasicBlock *currentBlock)
 {
     LOG_INFO("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!Declarations override the GENIR, value="<<value<<"type:"<<type<< "children size"<< children.size());
-    
+    for(auto &child: children){
+        child->genIR(currentBlock);
+    }
     // Address* result = Address::getAddressFromType();
     // Address* addrLhs = (Address*)children.at(0)->genIR(currentBlock);
     // Address* addrRhs =(Address*)children.at(1)->genIR(currentBlock);

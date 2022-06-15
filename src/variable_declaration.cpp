@@ -36,3 +36,9 @@ std::optional<string> VarDeclaration::checkSemantics() {
 
     return std::nullopt;
 }
+void* VarDeclaration::genIR(BasicBlock* BB) {
+    for (const auto &child : this->children) {
+            child->genIR(BB);
+    }
+   
+}

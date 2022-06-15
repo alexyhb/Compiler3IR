@@ -50,7 +50,7 @@ ConstantIr::ConstantIr(long value)
 }
 
 void ConstantIr::write(std::ostream &stream) const {
-  // LOG_INFO(" THIS IS THE CONST!!!!!!!= "<<this->valueString<<"   "<< this->value);
+ // LOG_INFO(" THIS IS THE CONST size=0 type =, value = "<<this->valueString<<"11"<< this->value);
   stream << "$" << this->valueString;
 }
 unsigned long long TemporaryVariableIr::idGlobal = 0;

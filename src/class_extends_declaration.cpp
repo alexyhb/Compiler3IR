@@ -71,3 +71,17 @@ std::optional<string> ClassExtendsDeclaration::checkSemantics() {
 
     return std::nullopt;
 }
+void* ClassExtendsDeclaration::genIR(BasicBlock *currentBlock)
+{
+    LOG_INFO("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!ClassExtendsDeclaration override the GENIR, value="<<value<<"type:"<<type<< "children size"<< children.size());
+    // for(auto &child: children){
+    //     child->genIR(currentBlock);
+    // }
+    // Address* result = Address::getAddressFromType();
+    // Address* addrLhs = (Address*)children.at(0)->genIR(currentBlock);
+    // Address* addrRhs =(Address*)children.at(1)->genIR(currentBlock);
+    // std::string operatorString = getValue();
+    // ThreeAddressCode* in = new ExpressionIr(result,addrLhs,addrRhs,operatorString);
+    // currentBlock->add_code(in);
+    //return (void*)result;
+}
