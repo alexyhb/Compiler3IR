@@ -73,10 +73,12 @@ std::optional<string> ClassExtendsDeclaration::checkSemantics() {
 }
 void* ClassExtendsDeclaration::genIR(BasicBlock *currentBlock)
 {
-    LOG_INFO("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!ClassExtendsDeclaration override the GENIR, value="<<value<<"type:"<<type<< "children size"<< children.size());
-    // for(auto &child: children){
-    //     child->genIR(currentBlock);
-    // }
+    //LOG_INFO("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!ClassExtendsDeclaration override the GENIR, value="<<value<<"type:"<<type<< "children size"<< children.size());
+    
+    for(auto &child: children){
+        LOG_INFO("ClassExtent YES");
+        child->genIR(currentBlock);
+    }
     // Address* result = Address::getAddressFromType();
     // Address* addrLhs = (Address*)children.at(0)->genIR(currentBlock);
     // Address* addrRhs =(Address*)children.at(1)->genIR(currentBlock);

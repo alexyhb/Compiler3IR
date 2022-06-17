@@ -9,16 +9,19 @@ std::optional<string> PrimaryExpression::generateST() {
 }
 void* PrimaryExpression::genIR(BasicBlock *currentBlock)
 {
-    LOG_INFO(" PrimaryExpression has override genIR function, type = "<<type<<", value = "<<value<<"size"<<children.size());
+//LOG_INFO(" PrimaryExpression has override genIR function, type = "<<type<<", value = "<<value<<"size"<<children.size());
 
     Address* result;
-    if(children.size()>0){
-       // LOG_INFO(" PrimaryExpression type = "<<type<<", value = "<<value);
-         return children.at(0)->genIR(currentBlock);
+    if(children.size()==1){
+        //LOG_INFO(" PrimaryExpression0 type = "<<type<<", value = "<<value);
+
+         children.at(0)->genIR(currentBlock);
+        //LOG_INFO(" PrimaryExpression1 type = "<<type<<", value = "<<value);
 
         
-    }else{
-       // LOG_INFO(" PrimaryExpression size=0 type = "<<type<<", value = "<<value);
+    }else if(children.size()==0){
+        //LOG_INFO(" PrimaryExpression2  type = "<<type<<", value = "<<value);
+
         result =  Address::getAddressFromType(type,value);
         return (void*)result;
     }

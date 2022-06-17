@@ -8,6 +8,7 @@ public:
     Goal();
     Goal(std::string t, std::string v);
     ~Goal() override = default;
+    void* genIR(BasicBlock* BB);
 
     std::optional<std::string> generateST() override;
     std::optional<std::string> checkSemantics() override;

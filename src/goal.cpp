@@ -16,6 +16,13 @@ std::optional<string> Goal::generateST() {
     return std::nullopt;
 }
 
+void* Goal::genIR(BasicBlock* BB) {
+    for(auto &child: children){
+   // LOG_INFO("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!Goal override the GENIR, value="<<value<<"type:"<<type<< "children size"<< children.size());
+        child->genIR(BB);
+    }
+   
+}
 std::optional<string> Goal::checkSemantics() {
     for (const auto &child : this->children) {
         Goal::st.enterScope();

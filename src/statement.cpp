@@ -8,7 +8,7 @@ std::optional<string> Statement::generateST() {
     return std::nullopt;
 }
 void* Statement::genIR(BasicBlock* BB) {
-    LOG_INFO("statements or statement"<< children.size());
+    LOG_INFO("statements or statement:"<<value <<" "<< children.size());
     if(children.size()==1){
         children.at(0)->genIR(BB);
 

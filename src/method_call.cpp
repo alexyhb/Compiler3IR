@@ -10,7 +10,7 @@ std::optional<string> MethodCall::generateST() {
 }
 
 void* MethodCall::genIR(BasicBlock* BB) {
-    LOG_INFO("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!ClassExtendsDeclaration override the GENIR, value="<<value<<"type:"<<type<< "children size"<< children.size());
+    //LOG_INFO("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!ClassExtendsDeclaration override the GENIR, value="<<value<<"type:"<<type<< "children size"<< children.size());
 
     //return children.at(0)->genIR(BB);
 }
@@ -25,7 +25,7 @@ std::optional<string> MethodCall::checkSemantics() {
 
     size_t size = this->children.size();
     string type = this->children.at(0)->getType();
-    LOG_INFO("METHODCALL CHECK size:"<< size<< " type: "<< type );
+   // LOG_INFO("METHODCALL CHECK size:"<< size<< " type: "<< type );
  
 
     return std::nullopt;

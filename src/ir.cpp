@@ -22,12 +22,12 @@ Address* Address::getAddressFromType(const std::string &type,const std::string& 
       return new VariableIr(valueString);
   if(type=="int")
   {
-     LOG_INFO("return constant IR: "<<value);
+     //LOG_INFO("return constant IR: "<<value);
     return new ConstantIr(value);
   }
   if(type=="boolean")
   {
-     LOG_INFO("return constant IR: "<<value);
+    // LOG_INFO("return constant IR: "<<value);
     return new ConstantIr(value);
   }
       
@@ -108,12 +108,12 @@ void CopyIr::write(std::ostream &stream) const {
   stream << this->result << " := " << this->left;
 }
 
-ArrayAccessIr::ArrayAccessIr(Address *left, Address *right)
-    : ThreeAddressCode(left, right) {
+ArrayAccessIr::ArrayAccessIr(Address *result, Address *left, Address *right)
+    : ThreeAddressCode(result,left, right) {
 }
 
 void ArrayAccessIr::write(std::ostream &stream) const {
-  stream << this->result << " := " << this->left << "[" << this->right << "]";
+  stream << this->result << " [ "<< this->left<<"]:= "  << this->right ;
 }
 
 NewIr::NewIr(Address *result, Address *operand)

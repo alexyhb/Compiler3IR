@@ -4,8 +4,8 @@ Declarations::Declarations() : Node() {}
 Declarations::Declarations(std::string t, std::string v) : Node(std::move(t), std::move(v)) {}
 void* Declarations::genIR(BasicBlock *currentBlock)
 {
-    LOG_INFO("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!Declarations override the GENIR, value="<<value<<"type:"<<type<< "children size"<< children.size());
     for(auto &child: children){
+ //   LOG_INFO("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!Declarations override the GENIR, value="<<value<<"type:"<<type<< "children size"<< children.size());
         child->genIR(currentBlock);
     }
     // Address* result = Address::getAddressFromType();

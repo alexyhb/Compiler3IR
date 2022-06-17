@@ -6,8 +6,9 @@ MethodDeclaration::MethodDeclaration() : Declarations() {}
 MethodDeclaration::MethodDeclaration(std::string t, std::string v) : Declarations(std::move(t), std::move(v)) {}
 void* MethodDeclaration::genIR(BasicBlock* currentBlock)
 {
-    LOG_INFO("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!MethodDeclaration override the GENIR, value="<<value<<"type:"<<type<< "children size"<< children.size());
+   // LOG_INFO("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!MethodDeclaration override the GENIR, value="<<value<<"type:"<<type<< "children size"<< children.size());
     for(auto &child: children){
+      //  LOG_INFO("-----------------------"<<child->getId());
         child->genIR(currentBlock);
     }
     // Address* result = Address::getAddressFromType();
@@ -19,7 +20,7 @@ void* MethodDeclaration::genIR(BasicBlock* currentBlock)
     //return (void*)result;
     //ControlFlowGraph * controlFlowGraph = new ControlFlowGraph();
     //TODO
-    return nullptr;
+   
 }
 std::optional<string> MethodDeclaration::generateST() {
     string method_name, method_type;

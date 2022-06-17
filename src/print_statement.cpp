@@ -16,7 +16,7 @@ std::optional<string> PrintStatement::checkSemantics() {
 
 void* PrintStatement::genIR(BasicBlock *currentBlock)
 {
-    LOG_INFO("PrintStatement override the GENIR, value="<<value<<"type:"<<type);
+   // LOG_INFO("PrintStatement override the GENIR, value="<<value<<"type:"<<type);
     
     return children.at(0)->genIR(currentBlock);
 }

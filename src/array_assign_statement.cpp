@@ -33,12 +33,25 @@ std::optional<string> ArrayAssignStatement::checkSemantics() {
 }
 void* ArrayAssignStatement::genIR(BasicBlock *currentBlock)
 {
-    LOG_INFO("ArrayAssignStatement override the GENIR, value="<<value<<"type:"<<type);
-    Address* result = Address::getAddressFromType();
-    Address* addrLhs = (Address*)children.at(0)->genIR(currentBlock);
-    Address* addrRhs =(Address*)children.at(1)->genIR(currentBlock);
-    std::string operatorString = getValue();
-    ThreeAddressCode* in = new ExpressionIr(result,addrLhs,addrRhs,operatorString);
-    currentBlock->add_code(in);
-    return (void*)result;
+    if(value=="[]="){
+    LOG_INFO("ArrayAssignStatement1 override the GENIR, value="<<value<<"type:"<<type<< " size:" << children.size());
+        Address* result = (Address*)children.at(0)->genIR(currentBlock);
+        Address* addrLhs = (Address*)children.at(1)->genIR(currentBlock);
+        Address* addrRhs =(Address*)children.at(2)->genIR(currentBlock);
+        std::string operatorString = getValue();
+        ThreeAddressCode* in = new ArrayAccessIr(result,addrLhs,addrRhs);
+        currentBlock->add_code(in);
+
+    }
+    if(value=="=[]"){
+    LOG_INFO("ArrayAssignStatement2 override the GENIR, value="<<value<<"type:"<<type<< " size:" << children.size());
+
+        Address* result = (Address*)children.at(0)->genIR(currentBlock);
+        Address* addrLhs = (Address*)children.at(1)->genIR(currentBlock);
+        Address* addrRhs =(Address*)children.at(2)->genIR(currentBlock);
+        std::string operatorString = getValue();
+        ThreeAddressCode* in = new ArrayAccessIr(result,addrLhs,addrRhs);
+        currentBlock->add_code(in);
+    }
+    
 }

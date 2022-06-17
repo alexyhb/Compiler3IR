@@ -5,26 +5,71 @@ labelloc="t";
 node [shape=rect, fontname=Arial, width=5];
 
 n0 [label=<<U><B>Program</B></U><BR/><BR/>
-name: Test; record: Class; type: Test<BR/>
-name: RecursiveSum; record: Class; type: RecursiveSum<BR/>
+name: BS; record: Class; type: BS<BR/>
+name: BinarySearch; record: Class; type: BinarySearch<BR/>
 >];
 n0 -- n1;
-n1 [label=<<U><B>Class: RecursiveSum</B></U><BR/><BR/>
+n1 [label=<<U><B>Class: BinarySearch</B></U><BR/><BR/>
 name: main; record: Method; type: void<BR/>
-name: this; record: Variable; type: RecursiveSum<BR/>
+name: this; record: Variable; type: BinarySearch<BR/>
 >];
 n1 -- n2;
 n2 [label=<<U><B>Method: main</B></U><BR/><BR/>
 name: a; record: Parameter; type: String[]<BR/>
 >];
 n0 -- n3;
-n3 [label=<<U><B>Class: Test</B></U><BR/><BR/>
-name: Sum; record: Method; type: int<BR/>
-name: this; record: Variable; type: Test<BR/>
+n3 [label=<<U><B>Class: BS</B></U><BR/><BR/>
+name: Init; record: Method; type: int<BR/>
+name: Compare; record: Method; type: boolean<BR/>
+name: Search; record: Method; type: boolean<BR/>
+name: Start; record: Method; type: int<BR/>
+name: Div; record: Method; type: int<BR/>
+name: size; record: Variable; type: int<BR/>
+name: number; record: Variable; type: int[]<BR/>
+name: Print; record: Method; type: int<BR/>
+name: this; record: Variable; type: BS<BR/>
 >];
 n3 -- n4;
-n4 [label=<<U><B>Method: Sum</B></U><BR/><BR/>
-name: sum; record: Variable; type: int<BR/>
+n4 [label=<<U><B>Method: Start</B></U><BR/><BR/>
+name: aux02; record: Variable; type: int<BR/>
+name: aux01; record: Variable; type: int<BR/>
+name: sz; record: Parameter; type: int<BR/>
+>];
+n3 -- n5;
+n5 [label=<<U><B>Method: Search</B></U><BR/><BR/>
+name: nt; record: Variable; type: int<BR/>
+name: aux01; record: Variable; type: int<BR/>
+name: medium; record: Variable; type: int<BR/>
+name: left; record: Variable; type: int<BR/>
+name: right; record: Variable; type: int<BR/>
+name: var_cont; record: Variable; type: boolean<BR/>
+name: bs01; record: Variable; type: boolean<BR/>
 name: num; record: Parameter; type: int<BR/>
+>];
+n3 -- n6;
+n6 [label=<<U><B>Method: Div</B></U><BR/><BR/>
+name: aux03; record: Variable; type: int<BR/>
+name: count02; record: Variable; type: int<BR/>
+name: count01; record: Variable; type: int<BR/>
+name: num; record: Parameter; type: int<BR/>
+>];
+n3 -- n7;
+n7 [label=<<U><B>Method: Compare</B></U><BR/><BR/>
+name: aux02; record: Variable; type: int<BR/>
+name: retval; record: Variable; type: boolean<BR/>
+name: num2; record: Parameter; type: int<BR/>
+name: num1; record: Parameter; type: int<BR/>
+>];
+n3 -- n8;
+n8 [label=<<U><B>Method: Print</B></U><BR/><BR/>
+name: j; record: Variable; type: int<BR/>
+>];
+n3 -- n9;
+n9 [label=<<U><B>Method: Init</B></U><BR/><BR/>
+name: aux01; record: Variable; type: int<BR/>
+name: aux02; record: Variable; type: int<BR/>
+name: k; record: Variable; type: int<BR/>
+name: j; record: Variable; type: int<BR/>
+name: sz; record: Parameter; type: int<BR/>
 >];
 }

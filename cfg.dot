@@ -1,5 +1,8 @@
 digraph {
 graph [splines=ortho]
 compound=true;
-subgraph "clusterRecursiveSum" {
+subgraph "clusterBinarySearch" {
 label = "block_1";
+49[shape=box label=""];
+}
+}

@@ -16,12 +16,12 @@ std::optional<string> ArrayAllocExpression::checkSemantics() {
 }
 void* ArrayAllocExpression::genIR(BasicBlock *currentBlock)
 {
+    LOG_INFO("ArrayAllocExpression override the GENIR, value="<<value<<"type:"<<type<< " size:" << children.size());
+
     //LOG_INFO("here");
     Address* result = Address::getAddressFromType();
     Address* addrLhs = (Address*)children.at(0)->genIR(currentBlock);
-    Address* addrRhs =(Address*)children.at(1)->genIR(currentBlock);
-    std::string operatorString = getValue();
-    ThreeAddressCode* in = new ExpressionIr(result,addrLhs,addrRhs,operatorString);
+    ThreeAddressCode* in = new NewArrayIr(result,addrLhs);
     currentBlock->add_code(in);
     return (void*)result;
 }

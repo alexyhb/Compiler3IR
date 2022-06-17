@@ -8,7 +8,7 @@ public:
     ExpressionList();
     ExpressionList(std::string t, std::string v);
     ~ExpressionList() override = default;
-    void* genIR(BasicBlock* BB);
+    void* genIR(BasicBlock* BB) ; 
 
     std::optional<std::string> checkSemantics() final;
 };

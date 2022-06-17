@@ -51,8 +51,8 @@ std::optional<string> MainClass::checkSemantics() {
 
 void* MainClass::genIR(BasicBlock *currentBlock)
 {
-    LOG_INFO("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!MainClass override the GENIR, value="<<value<<"type:"<<type<< "children size"<< children.size());
     for(auto &child: children){
+//LOG_INFO("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!MainClass override the GENIR, value="<<value<<"type:"<<type<< "children size"<< children.size());
         child->genIR(currentBlock);
     }
     // Address* result = Address::getAddressFromType();

@@ -37,11 +37,11 @@ string Node::getValue() const {
 //genIR interface maybe different for statment and expression
 void* Node::genIR(BasicBlock *currentBlock)
 {
-    LOG_INFO("drived class should override genIR function, type = "<<type<<", value = "<<value);
-    LOG_INFO("children size = "<<children.size());
+   // LOG_INFO("drived class should override genIR function, type = "<<type<<", value = "<<value);
+   // LOG_INFO("children size = "<<children.size());
     void* result = nullptr;
     if(type=="boolean"||type=="int"){
-        LOG_INFO("this is"<< type<<" and value is "<< value );
+    //    LOG_INFO("this is"<< type<<" and value is "<< value );
     }
     for (const auto &child : children) {
             child->printInf();
@@ -49,7 +49,7 @@ void* Node::genIR(BasicBlock *currentBlock)
         }
     if(result!=nullptr&&getValue().size()>0)
         return result;
-    LOG_INFO("return null pointer, shouldn't be like this 1"<<type);
+   // LOG_INFO("return null pointer, shouldn't be like this 1"<<type);
     return NULL;
 }
 void* Node::genIR(std::map<std::string ,ControlFlowGraph*> &cfgs)
@@ -57,7 +57,7 @@ void* Node::genIR(std::map<std::string ,ControlFlowGraph*> &cfgs)
     printInf();
     if(children.size()>0)
         return children.at(0)->genIR(cfgs);
-    LOG_INFO("return null pointer, shouldn't be like this 2");
+   // LOG_INFO("return null pointer, shouldn't be like this 2");
     return NULL;
 }
 void Node::printInf()

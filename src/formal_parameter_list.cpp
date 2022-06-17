@@ -6,8 +6,8 @@ FormalParameterList::FormalParameterList() : Node() {}
 FormalParameterList::FormalParameterList(string t, string v) : Node(std::move(t), std::move(v)) {}
 void* FormalParameterList::genIR(BasicBlock *currentBlock)
 {
-    LOG_INFO("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!FormalParameterList override the GENIR, value="<<value<<"type:"<<type<< "children size"<< children.size());
     for(auto &child: children){
+   // LOG_INFO("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!FormalParameterList override the GENIR, value="<<value<<"type:"<<type<< "children size"<< children.size());
         child->genIR(currentBlock);
     }
     // Address* result = Address::getAddressFromType();

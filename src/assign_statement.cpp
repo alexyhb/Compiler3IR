@@ -26,12 +26,12 @@ std::optional<string> AssignStatement::checkSemantics() {
 }
 void* AssignStatement::genIR(BasicBlock *currentBlock)
 {
-    LOG_INFO("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!AssignStatement override the GENIR, value="<<value<<"type:"<<type<< "children size"<< children.size());
-    // Address* result = Address::getAddressFromType();
-    // Address* addrLhs = (Address*)children.at(0)->genIR(currentBlock);
-    // Address* addrRhs =(Address*)children.at(1)->genIR(currentBlock);
-    // std::string operatorString = getValue();
-    // ThreeAddressCode* in = new ExpressionIr(result,addrLhs,addrRhs,operatorString);
-    // currentBlock->add_code(in);
-    //return (void*)result;
+    
+    // Address* result = Address::getAddressFromType();/
+    Address* addrLhs = (Address*)children.at(0)->genIR(currentBlock);
+    Address* addrRhs =(Address*)children.at(1)->genIR(currentBlock);
+    std::string operatorString = getValue();
+    ThreeAddressCode* in = new NewIr(addrLhs,addrRhs);
+    currentBlock->add_code(in);
+    
 }

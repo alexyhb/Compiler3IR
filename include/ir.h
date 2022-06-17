@@ -78,7 +78,7 @@ public:
 
 class ArrayAccessIr : public ThreeAddressCode {
 public:
-  ArrayAccessIr(Address *left, Address *right);
+  ArrayAccessIr(Address *result,Address *left, Address *right);
   void write(std::ostream &stream) const;
 };
 
