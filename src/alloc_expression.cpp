@@ -18,7 +18,7 @@ std::optional<string> AllocExpression::checkSemantics() {
 }
 void* AllocExpression::genIR(BasicBlock* currentBasicBlock)
 {
-    //LOG_INFO(children.at(0)->getType()<<","<<children.at(0)->getValue());
+    LOG_INFO(children.at(0)->getType()<<","<<children.at(0)->getValue());
     Address *tmpVar = Address::getAddressFromType();
     Address *tmp = Address::getAddressFromType(children.at(0)->getType(),children.at(0)->getValue());
     ThreeAddressCode *newIR = new NewIr(tmpVar,tmp);

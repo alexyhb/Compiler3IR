@@ -23,7 +23,7 @@ void* IfStatement::genIR(BasicBlock *currentBlock)
 {
     LOG_INFO("IF statment");
     children.at(0)->genIR(currentBlock);
-    Address* result = Address::getAddressFromType();
+    //Address* result = Address::getAddressFromType(type,value);
     BasicBlock* trueBrunch = new BasicBlock();
     Address* trueAddress = (Address*)children.at(1)->genIR(trueBrunch);
     BasicBlock* falseBrunch = new BasicBlock();

@@ -97,5 +97,7 @@ int main(int argc, char *argv[]) {
     std::ofstream st_cfg_stream;
     st_cfg_stream.open("cfg.dot", std::ios::out);
     irGen.write_cfg(st_cfg_stream);
+    st_dot_stream.close();
+
     return EXIT_SUCCESS;
 }

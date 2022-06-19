@@ -36,15 +36,22 @@ void BasicBlock::set_condition(ir::ThreeAddressCode *condition)
 
 void BasicBlock::write(std::ostream &stream, std::map<long, bool> &visited) const {
   // Recursion guard
+ 
   if (visited.count(this->getId()) > 0)
     return;
   visited[this->getId()] = true;
 
-  // stream << this->getId() << "[shape=box xlabel=\"" << this->identifier << "\", label=\"";
+  //stream << this->getId() << "[shape=box xlabel=\"" << this->identifier << "\", label=\"";
   stream << this->getId() << "[shape=box label=\"";
+  int i= 0;
   for (const auto &code : this->codes) {
+    LOG_INFO("CODE "<<this->identifier);
+    //LOG_INFO("CODE "<< i <<"reulst: "<< code->result << "left : "<< code->left <<" right:  " << code->right);
     code->write(stream);
     stream << "\\n";
+    LOG_INFO("CODE 1"<<i);
+
+    i++;
   }
 
   stream << "\"];" << std::endl;

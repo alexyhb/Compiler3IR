@@ -7,6 +7,8 @@ namespace ir{
     
 class Address {
 public:
+  std::string type="address";
+  
   intptr_t get_id() const;
   virtual void write(std::ostream &stream) const = 0;
   static Address* getAddressFromType(const std::string &type="",const std::string& valueString="");
@@ -15,6 +17,7 @@ public:
 class VariableIr : public Address {
 public:
   std::string identifier;
+  std::string type="var";
 
   VariableIr(std::string identifier);
   void write(std::ostream &stream) const;
@@ -23,10 +26,11 @@ public:
 class ConstantIr : public Address {
 public:
   // Long to enable storage of intptr_t, not only ints
-  long value;
-  std::string valueString;
-  ConstantIr(const std::string valueString);
-  ConstantIr(long value);
+  int value;
+  std::string type="const";
+
+  //ConstantIr(const std::string valueString);
+  ConstantIr(int value);
   void write(std::ostream &stream) const;
 };
 
@@ -34,6 +38,8 @@ class TemporaryVariableIr : public Address {
 public:
   static unsigned long long idGlobal;
   unsigned long long id;
+  std::string type="temp";
+
   TemporaryVariableIr();
   TemporaryVariableIr(unsigned long long id);
   void write(std::ostream &stream) const;
@@ -84,7 +90,8 @@ public:
 
 class NewIr : public ThreeAddressCode {
 public:
-  NewIr(Address *result, Address *operand);
+  NewIr(Address *result,Address *operand);
+  NewIr(Address *result);
   void write(std::ostream &stream) const;
 };
 
@@ -108,6 +115,7 @@ public:
 
 class MethodCallIr : public ThreeAddressCode {
 public:
+ 
   MethodCallIr(Address *result, Address *left, Address *right);
   MethodCallIr(Address *left, Address *right);
   void write(std::ostream &stream) const;

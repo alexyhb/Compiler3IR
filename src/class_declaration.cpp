@@ -39,7 +39,7 @@ std::optional<string> ClassDeclaration::checkSemantics() {
 void* ClassDeclaration::genIR(BasicBlock *currentBlock)
 {
     for(auto &child: children){
-   // LOG_INFO("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!Declarations override the GENIR, value="<<value<<"type:"<<type<< "children size"<< children.size());
+   LOG_INFO("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!Declarations override the GENIR, value="<<value<<"type:"<<type<< "children size"<< children.size());
         child->genIR(currentBlock);
     }
     // Address* result = Address::getAddressFromType();
@@ -49,4 +49,12 @@ void* ClassDeclaration::genIR(BasicBlock *currentBlock)
     // ThreeAddressCode* in = new ExpressionIr(result,addrLhs,addrRhs,operatorString);
     // currentBlock->add_code(in);
     //return (void*)result;
+}
+void* ClassDeclaration::genIR(std::map<std::string ,ControlFlowGraph*> &cfgs)
+{
+    ControlFlowGraph * controlFlowGraph = new ControlFlowGraph();
+     LOG_INFO("!!!!!!!!!!!!!");
+    cfgs[children.at(0)->getValue()] = controlFlowGraph;
+    children.at(1)->genIR(controlFlowGraph->entry_point);
+    return nullptr;
 }

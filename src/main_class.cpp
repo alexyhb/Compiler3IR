@@ -6,6 +6,7 @@ MainClass::MainClass() : Node() {}
 MainClass::MainClass(string t, string v) : Node(std::move(t), std::move(v)) {}
 void* MainClass::genIR(std::map<std::string ,ControlFlowGraph*> &cfgs)
 {
+    LOG_INFO("Main start the IRGEN");
     ControlFlowGraph * controlFlowGraph = new ControlFlowGraph();
     cfgs[children.at(0)->getValue()] = controlFlowGraph;
     children.at(2)->genIR(controlFlowGraph->entry_point);

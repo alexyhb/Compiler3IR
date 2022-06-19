@@ -10,25 +10,44 @@ std::optional<string> Expression::generateST() {
 }
 
 void* Expression::genIR(BasicBlock* currentBlock) {
-    size_t size = children.size();
-    string type = this->children.at(0)->getType();
 
+    
+
+    size_t size = children.size();
+   
+    
     LOG_INFO("Size of experession!!!!!!!!!!!!!!!!!!!!!!!!!! : " << children.size());
     if(size==1){
-        children.at(0)->genIR(currentBlock);
+        string type = this->children.at(0)->getType();
+        string value= this->children.at(0)->getValue();
+        Address *address =  Address::getAddressFromType(type,value);
+        LOG_INFO("HERE IS THE SOLUTION!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! "<< type<< "  "<< value);
+        return (void*) address;
     }
-    if(size=3){
+    if(size==3){
         LOG_INFO("Method call 3: "<<value<< "type "<<type<<" child size: ");
         LOG_INFO("Children0:" << children.at(0)->getValue());
         LOG_INFO("Children1:" << children.at(1)->getValue());
         LOG_INFO("Children2:" << children.at(2)->getValue());
+        Address* result = Address::getAddressFromType();
+       //Address* addrLhs = (Address*)children.at(0)->genIR(currentBlock);
+        Address* addrRhs =(Address*)children.at(1)->genIR(currentBlock);
+        Address* addrRhs2 =(Address*)children.at(2)->genIR(currentBlock);
 
+    // //     Address* result = (Address*)children.at(0)->genIR(currentBlock);
+    // //     Address* addrLhs = (Address*)children.at(1)->genIR(currentBlock);
+    // //     Address* addrRhs =(Address*)children.at(2)->genIR(currentBlock);
+        ThreeAddressCode* in = new MethodCallIr(result,addrRhs,addrRhs2);
+          currentBlock->add_code(in);
     }
-    if(size=2){
+    if(size==2){
         LOG_INFO("Method call 2: "<<value<< "type "<<type<<" child size: ");
         LOG_INFO("Children0:" << children.at(0)->getValue());
-        //LOG_INFO("Children1:" << children.at(1)->getValue());
-
+        LOG_INFO("Children1:" << children.at(1)->getValue());
+        Address* addrLhs = (Address*)children.at(0)->genIR(currentBlock);
+        Address* addrRhs =(Address*)children.at(1)->genIR(currentBlock);
+        ThreeAddressCode* in = new MethodCallIr(addrLhs,addrRhs);
+        currentBlock->add_code(in);
     }
     // else if(size==3 && (type == "AllocExpression"|| type == "PrimaryExpression"||type == "keyword")){
     //      LOG_INFO("Method call 1 : ");
