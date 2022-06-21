@@ -53,7 +53,7 @@ public:
 
   ThreeAddressCode(Address *left, Address *right);
   ThreeAddressCode(Address *result, Address *left, Address *right);
-  // virtual void genByteCode(std::ostream &stream) const=0;
+  virtual void genByteCode(std::ostream &stream) const=0;
   virtual void write(std::ostream &stream) const = 0;
 };
 
@@ -64,8 +64,7 @@ public:
   ExpressionIr(Address *target, Address *left, Address *right, std::string ir_operator);
   ExpressionIr(Address *left, Address *right, std::string ir_operator);
   void write(std::ostream &stream) const;
-  
- // void genBytecode(BasicBlock *currentBlock,std::ostream &stream) const;
+  void genByteCode(std::ostream &stream) const;
 };
 
 class UnaryExpressionIr : public ThreeAddressCode {
@@ -75,6 +74,8 @@ public:
   UnaryExpressionIr(Address *target, Address *left, std::string ir_operator);
   UnaryExpressionIr(Address *left, std::string ir_operator);
   void write(std::ostream &stream) const;
+  void genByteCode(std::ostream &stream) const;
+
   
 };
 
@@ -83,6 +84,8 @@ public:
   CopyIr(Address *operand);
   CopyIr(Address *target, Address *operand);
   void write(std::ostream &stream) const;
+  void genByteCode(std::ostream &stream) const;
+
   
 };
 
@@ -90,6 +93,8 @@ class ArrayAccessIr : public ThreeAddressCode {
 public:
   ArrayAccessIr(Address *result,Address *left, Address *right);
   void write(std::ostream &stream) const;
+  void genByteCode(std::ostream &stream) const;
+
   
 };
 
@@ -98,6 +103,8 @@ public:
   NewIr(Address *result,Address *operand);
   NewIr(Address *result);
   void write(std::ostream &stream) const;
+  void genByteCode(std::ostream &stream) const;
+
   
 };
 
@@ -105,6 +112,8 @@ class NewArrayIr : public ThreeAddressCode {
 public:
   NewArrayIr(Address *left, Address *right);
   void write(std::ostream &stream) const;
+  void genByteCode(std::ostream &stream) const;
+
   
 };
 
@@ -112,6 +121,8 @@ class PushIr : public ThreeAddressCode {
 public:
   PushIr(Address *operand);
   void write(std::ostream &stream) const;
+  void genByteCode(std::ostream &stream) const;
+
   
 };
 
@@ -119,6 +130,8 @@ class ParameterIr : public ThreeAddressCode {
 public:
   ParameterIr(Address *operand);
   void write(std::ostream &stream) const;
+  void genByteCode(std::ostream &stream) const;
+
   
 };
 
@@ -128,6 +141,8 @@ public:
   MethodCallIr(Address *result, Address *left, Address *right);
   MethodCallIr(Address *left, Address *right);
   void write(std::ostream &stream) const;
+  void genByteCode(std::ostream &stream) const;
+
   
 };
 
@@ -136,6 +151,8 @@ public:
   ReturnIr(Address *operand);
   ReturnIr();
   void write(std::ostream &stream) const;
+  void genByteCode(std::ostream &stream) const;
+
   
 };
 
@@ -143,19 +160,28 @@ class UnconditionalJumpIr : public ThreeAddressCode {
 public:
   UnconditionalJumpIr(Address *target);
   void write(std::ostream &stream) const;
+  void genByteCode(std::ostream &stream) const;
+
   
 };
-class PrintCallIr: public ThreeAddressCode{
-public:
-  PrintCallIr(Address *target);
-  void write(std::ostream &stream) const;
-  
-  
-};
+
 class ConditionalJumpIr : public ThreeAddressCode {
 public:
   ConditionalJumpIr(Address *condition, Address *target);
   void write(std::ostream &stream) const;
+  void genByteCode(std::ostream &stream) const;
+
+  
+};
+
+class PrintCallIr: public ThreeAddressCode{
+public:
+  PrintCallIr(Address *target);
+  void write(std::ostream &stream) const;
+  void genByteCode(std::ostream &stream) const;
+
+ 
+  
   
 };
 } // namespace IR

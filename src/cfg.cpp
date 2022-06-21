@@ -64,11 +64,19 @@ void BasicBlock::write(std::ostream &stream, std::map<long, bool> &visited) cons
     this->negative_branch->write(stream, visited);
   }
 }
-// void BasicBlock::genByteCode(std::ostream &stream){
-//   for(auto tac: this->codes){
-//     tac->genByteCode(stream);
-//   }
-// }
+void BasicBlock::genByteCode(std::ostream &stream,std::map<long, bool> &visited){
+    if (visited.count(this->getId()) > 0)
+    return;
+  visited[this->getId()] = true;
+
+  for (const auto &code : this->codes) {
+   
+    //LOG_INFO("CODE "<< i <<"reulst: "<< code->result << "left : "<< code->left <<" right:  " << code->right);
+    code->genByteCode(stream);
+    
+
+  }
+}
 ControlFlowGraph::ControlFlowGraph() {
   this->entry_point = new BasicBlock();
 }
@@ -89,7 +97,11 @@ void ControlFlowGraph::write(std::ostream &stream) const {
   std::map<long, bool> visited;
   this->entry_point->write(stream, visited);
 }
-
+void ControlFlowGraph::write_bytecode(std::ostream &stream) const {
+  std::map<long, bool> visited;
+  
+  this->entry_point->genByteCode(stream,visited);
+}
 intptr_t ControlFlowGraph::get_id() const {
   return reinterpret_cast<intptr_t>(this);
 }

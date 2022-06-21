@@ -69,3 +69,12 @@ void IrGen::write_cfg(std::ostream &stream) const {
 
 
 }
+
+void IrGen::write_bytecode(std::ostream &stream) const {
+ for (const auto &[key, cfg] : this->cfgs) {
+    
+    cfg->write_bytecode(stream);
+   
+
+   }
+}

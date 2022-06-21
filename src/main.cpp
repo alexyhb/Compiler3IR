@@ -47,7 +47,7 @@
 
 #include "irGen.h"
 #include <iostream>
-
+#include <vm.h>
 using std::cout;
 using std::endl;
 using std::size_t;
@@ -60,7 +60,7 @@ void yy::parser::error(const string &err) {
 }
 
 int main(int argc, char *argv[]) {
-    cout<<argv<<endl;;
+    
     if (argc > 1) {
         FILE *file = std::fopen(argv[1], "r");
         if (file) {
@@ -100,12 +100,15 @@ int main(int argc, char *argv[]) {
     irGen.write_cfg(st_cfg_stream);
     st_dot_stream.close();
 
-    CodeGen* gen = new CodeGen( &(*root) );
-    gen->generateCode();
-    return EXIT_SUCCESS;
+    // CodeGen* gen = new CodeGen( &(*root) );
+    // gen->generateCode();
+    // return EXIT_SUCCESS;
 
-    //std::ofstream bytecode_stream;
-    //st_cfg_stream.open(argv[1]+".class", std::ios::out);
+    std::ofstream bytecode_stream;
+    bytecode_stream.open("out.class", std::ios::out);
+    irGen.write_bytecode(bytecode_stream);
+    bytecode_stream.close();
 
-
+    VM *vm1=new VM();
+    vm1->translate();
 }
