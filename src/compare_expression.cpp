@@ -19,7 +19,7 @@ std::optional<string> CompareExpression::checkSemantics() {
 }
 void* CompareExpression::genIR(BasicBlock *currentBlock)
 {
-    LOG_INFO(" CompareExpression has override genIR function, type = "<<type<<", value = "<<value);
+    //LOG_INFO(" CompareExpression has override genIR function, type = "<<type<<", value = "<<value);
 
     Address* result = Address::getAddressFromType(type,value);
     Address* addrLhs = (Address*)children.at(0)->genIR(currentBlock);;

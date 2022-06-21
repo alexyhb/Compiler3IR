@@ -21,7 +21,7 @@ std::optional<string> IfStatement::checkSemantics() {
 
 void* IfStatement::genIR(BasicBlock *currentBlock)
 {
-    LOG_INFO("IF statment");
+  //  LOG_INFO("IF statment");
     children.at(0)->genIR(currentBlock);
     //Address* result = Address::getAddressFromType(type,value);
     BasicBlock* trueBrunch = new BasicBlock();

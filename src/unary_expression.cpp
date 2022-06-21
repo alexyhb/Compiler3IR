@@ -16,7 +16,7 @@ std::optional<string> UnaryExpression::checkSemantics() {
 
 void* UnaryExpression::genIR(BasicBlock *currentBlock)
 {
-    LOG_INFO(" UnaryExpression size=0 type = "<<type<<", value = "<<value<<"size="<<children.size());
+    //LOG_INFO(" UnaryExpression size=0 type = "<<type<<", value = "<<value<<"size="<<children.size());
 
     Address* result =Address::getAddressFromType(type,value);
     Address* addrLhs = (Address*)children.at(0)->genIR(currentBlock);

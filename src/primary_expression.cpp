@@ -13,7 +13,7 @@ void* PrimaryExpression::genIR(BasicBlock *currentBlock)
 
     Address* result;
     if(children.size()==1){
-        LOG_INFO(" PrimaryExpression type = "<<type<<", value = "<<value);
+      //  LOG_INFO(" PrimaryExpression type = "<<type<<", value = "<<value);
 
         result =(Address*) children.at(0)->genIR(currentBlock);
         //LOG_INFO(" PrimaryExpression1 type = "<<type<<", value = "<<value);

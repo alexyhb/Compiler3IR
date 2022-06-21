@@ -76,7 +76,7 @@ void* ClassExtendsDeclaration::genIR(BasicBlock *currentBlock)
     //LOG_INFO("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!ClassExtendsDeclaration override the GENIR, value="<<value<<"type:"<<type<< "children size"<< children.size());
     
     for(auto &child: children){
-        LOG_INFO("ClassExtent YES");
+        //LOG_INFO("ClassExtent YES");
         child->genIR(currentBlock);
     }
     // Address* result = Address::getAddressFromType();

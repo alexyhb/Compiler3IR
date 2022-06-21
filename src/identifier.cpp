@@ -15,7 +15,7 @@ std::optional<string> Identifier::checkSemantics() {
 
 
 void* Identifier::genIR(BasicBlock *currentBlock) {
-    LOG_INFO("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!Identifier genIR function, type = "<<type<<", value = "<<value);
+    //LOG_INFO("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!Identifier genIR function, type = "<<type<<", value = "<<value);
 
     return (void*)Address::getAddressFromType(getType(),getValue());
 }

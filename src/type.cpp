@@ -16,7 +16,7 @@ std::optional<string> Type::generateST() {
 }
 void* Type::genIR(BasicBlock *currentBlock)
 {
-    LOG_INFO("TYPE CLASS, type = "<<type<<", value = "<<value);
+    //LOG_INFO("TYPE CLASS, type = "<<type<<", value = "<<value);
     Address* result = Address::getAddressFromType();
     // Address* addrLhs = (Address*)children.at(0)->genIR(currentBlock);
     //Address* addrRhs = (Address*)children.at(1)->genIR(currentBlock);

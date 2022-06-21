@@ -16,7 +16,7 @@ void* Expression::genIR(BasicBlock* currentBlock) {
     size_t size = children.size();
     
     
-    LOG_INFO("Size of experession!!!!!!!!!!!!!!!!!!!!!!!!!! : " << children.size());
+    //LOG_INFO("Size of experession!!!!!!!!!!!!!!!!!!!!!!!!!! : " << children.size());
     if(size==1){
         
         string type = this->children.at(0)->getType();
@@ -28,7 +28,6 @@ void* Expression::genIR(BasicBlock* currentBlock) {
         }else{
 
             Address *address =  Address::getAddressFromType(type,value);
-            LOG_INFO("HERE IS THE SOLUTION!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! "<< type<< "  "<< value);
             return (void*) address;
         }
     }

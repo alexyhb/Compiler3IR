@@ -16,7 +16,7 @@ std::optional<string> ArrayAllocExpression::checkSemantics() {
 }
 void* ArrayAllocExpression::genIR(BasicBlock *currentBlock)
 {
-    LOG_INFO("ArrayAllocExpression override the GENIR, value="<<value<<"type:"<<type<< " size:" << children.size());
+    //LOG_INFO("ArrayAllocExpression override the GENIR, value="<<value<<"type:"<<type<< " size:" << children.size());
 
     //LOG_INFO("here");
     Address* result = Address::getAddressFromType();

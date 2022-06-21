@@ -22,23 +22,23 @@ IrGen::IrGen(std::shared_ptr<Node> codeStruct)
 
 void IrGen::generateIr(std::ostream &stream)
 {
-  LOG_INFO("START GENIR!_________-----------------------___________________________-----------------____________");
+  // LOG_INFO("START GENIR!_________-----------------------___________________________-----------------____________");
 
-  LOG_INFO("entry_point->entry_point = "<<entry_point->entry_point);
+  // LOG_INFO("entry_point->entry_point = "<<entry_point->entry_point);
   int i = 0;
       for (const auto &child : root->children) {
         std::string str =child->getType();
 
-        LOG_INFO("start gentIr"<< str);
+        // LOG_INFO("start gentIr"<< str);
         child->genIR(cfgs);
         i++;
     }
     
-  LOG_INFO("finish GENIR"<<i<<"-----------------------------------------------");
+  // LOG_INFO("finish GENIR"<<i<<"-----------------------------------------------");
 }
 
 void IrGen::write_cfg(std::ostream &stream) const {
-  LOG_INFO("START WRTING!_________-----------------------___________________________-----------------____________");
+  // LOG_INFO("START WRTING!_________-----------------------___________________________-----------------____________");
   stream << "digraph {" << std::endl;
   stream << "graph [splines=ortho]" << std::endl;
   stream << "node [shape=box];" << std::endl;
@@ -47,11 +47,11 @@ void IrGen::write_cfg(std::ostream &stream) const {
 
 
   for (const auto &[key, cfg] : this->cfgs) {
-     std::cout <<"cfg number"<< cfg->entry_point<<"   "<<this->entry_point<<std::endl;
+//     std::cout <<"cfg number"<< cfg->entry_point<<"   "<<this->entry_point<<std::endl;
      
-     LOG_INFO("Key: "<<cfg->entry_point->identifier  );
+    //  LOG_INFO("Key: "<<cfg->entry_point->identifier  );
      if (cfg == this->entry_point) {
-       LOG_INFO("key:"<< key);
+      //  LOG_INFO("key:"<< key);
   //     stream << "entrypoint[shape=box label=\"Entry Point\"];" << std::endl;
   //     stream << "entrypoint -> " << cfg->entry_point->get_id() << ";" << std::endl;
      }
@@ -59,13 +59,13 @@ void IrGen::write_cfg(std::ostream &stream) const {
     stream << "subgraph \"cluster" << key << "\" {" << std::endl;
     stream << "label = \"" << cfg->entry_point->identifier << "\";" << std::endl;
     cfg->write(stream);
-    LOG_INFO("key:"<< key);
+    // LOG_INFO("key:"<< key);
     stream << "}" << std::endl;
 
    }
   
   stream << "}" << std::endl;
-  LOG_INFO("END WRTING!_________-----------------------___________________________-----------------____________");
+  // LOG_INFO("END WRTING!_________-----------------------___________________________-----------------____________");
 
 
 }
