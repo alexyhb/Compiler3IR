@@ -43,15 +43,13 @@ void BasicBlock::write(std::ostream &stream, std::map<long, bool> &visited) cons
 
   //stream << this->getId() << "[shape=box xlabel=\"" << this->identifier << "\", label=\"";
   stream << this->getId() << "[shape=box label=\"";
-  int i= 0;
+  
   for (const auto &code : this->codes) {
-    LOG_INFO("CODE "<<this->identifier);
+   
     //LOG_INFO("CODE "<< i <<"reulst: "<< code->result << "left : "<< code->left <<" right:  " << code->right);
     code->write(stream);
     stream << "\\n";
-    LOG_INFO("CODE 1"<<i);
 
-    i++;
   }
 
   stream << "\"];" << std::endl;
@@ -66,7 +64,11 @@ void BasicBlock::write(std::ostream &stream, std::map<long, bool> &visited) cons
     this->negative_branch->write(stream, visited);
   }
 }
-
+// void BasicBlock::genByteCode(std::ostream &stream){
+//   for(auto tac: this->codes){
+//     tac->genByteCode(stream);
+//   }
+// }
 ControlFlowGraph::ControlFlowGraph() {
   this->entry_point = new BasicBlock();
 }

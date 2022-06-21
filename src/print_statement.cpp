@@ -15,8 +15,11 @@ std::optional<string> PrintStatement::checkSemantics() {
 }
 
 void* PrintStatement::genIR(BasicBlock *currentBlock)
-{
+{   
+    Address *result=(Address*)children.at(0)->genIR(currentBlock);
    // LOG_INFO("PrintStatement override the GENIR, value="<<value<<"type:"<<type);
-    
-    return children.at(0)->genIR(currentBlock);
+    ThreeAddressCode *in=new PrintCallIr(result);
+    currentBlock->codes.push_back(in);
+
+    return (void*)result;
 }

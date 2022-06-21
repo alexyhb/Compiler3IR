@@ -5,9 +5,9 @@ LogicExpression::LogicExpression() : Expression() {}
 LogicExpression::LogicExpression(string t, string v) : Expression(std::move(t), std::move(v)) {}
 void* LogicExpression::genIR(BasicBlock *currentBlock)
 {
-   //LOG_INFO("LogicExpression override genIR function, type = "<<type<<", value = "<<value);
+   LOG_INFO("LogicExpression override genIR function, type = "<<type<<", value = "<<value);
 
-    Address* result = Address::getAddressFromType();
+    Address* result = Address::getAddressFromType(type,value);
     Address* addrLhs = (Address*)children.at(0)->genIR(currentBlock);;
     Address* addrRhs = (Address*)children.at(1)->genIR(currentBlock);;
     std::string operatorString = getValue();

@@ -15,7 +15,7 @@
 
 #include "formal_parameter_list.h"
 #include "formal_parameter.h"
-
+#include "codegen.h"
 #include "expression.h"
 #include "expression_list.h"
 #include "logic_expression.h"
@@ -60,6 +60,7 @@ void yy::parser::error(const string &err) {
 }
 
 int main(int argc, char *argv[]) {
+    cout<<argv<<endl;;
     if (argc > 1) {
         FILE *file = std::fopen(argv[1], "r");
         if (file) {
@@ -99,5 +100,12 @@ int main(int argc, char *argv[]) {
     irGen.write_cfg(st_cfg_stream);
     st_dot_stream.close();
 
+    CodeGen* gen = new CodeGen( &(*root) );
+    gen->generateCode();
     return EXIT_SUCCESS;
+
+    //std::ofstream bytecode_stream;
+    //st_cfg_stream.open(argv[1]+".class", std::ios::out);
+
+
 }

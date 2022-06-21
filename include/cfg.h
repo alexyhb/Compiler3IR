@@ -26,7 +26,7 @@ public:
   void add_code(ir::ThreeAddressCode *code);
   void set_identifier(std::string identifier, ir::Address *result);
   void set_condition(ir::ThreeAddressCode *condition);
-
+  void genByteCode(std::ostream &stream);
   void write(std::ostream &stream, std::map<long, bool> &visited) const;
 
   intptr_t get_id() const;
@@ -41,7 +41,7 @@ public:
 
   void write(std::ostream &stream) const;
   void write_standalone(std::ostream &stream) const;
-
+ 
   intptr_t get_id() const;
 };
 

@@ -5,14 +5,14 @@ using namespace ir;
  std::ostream &operator<<(std::ostream &stream, const Address *address) {
   if (address == nullptr){
     stream << "null";
-  }else{
+  // }else{
+  //   address->write(stream);
+  // }
+  }
+  else if(address->type=="var"|| address->type=="const"|| address->type=="temp"){
     address->write(stream);
-  }
-  { 
-    if(address->type=="var"|| address->type=="const"|| address->type=="temp"){
-      
-    }  
-  }
+  }  
+ 
   return stream;
 }
 
@@ -30,36 +30,33 @@ Address* Address::getAddressFromType(const std::string &type,const std::string& 
     return new TemporaryVariableIr();
   }
   else if(type=="Identifier")
-      return new VariableIr(valueString);
+      return new VariableIr(valueString,"var");
   else if(type=="int")
   {
      LOG_INFO("return constant IR: "<<valueString);
-    return new ConstantIr(std::stoi(valueString));
+    return new ConstantIr(valueString,"const");
 
   }
   else if(type=="boolean")
   { 
-    bool flag=(valueString=="true");
-    
-    int i;
-    if(flag)
-      i=1;
-    else{
-      i=0;  
-    }
-    return new ConstantIr(i);
+
+    return new ConstantIr(valueString,"const");
   }
   else{
-    return new TemporaryVariableIr();
     LOG_INFO(" WHY ???????????????????????????????????????????????????????????????????????????????????????????????????   "<<type<<" "<<valueString);
+    return new TemporaryVariableIr();
 
   }
       
 }
 
+Address:: Address(std::string type)
+    : type(type){
 
-VariableIr:: VariableIr(std::string identifier)
-    : identifier(identifier) {
+}
+VariableIr:: VariableIr(std::string identifier,std::string type)
+    : Address(type),identifier(identifier) {
+      
 }
 
 void VariableIr::write(std::ostream &stream) const {
@@ -68,8 +65,8 @@ void VariableIr::write(std::ostream &stream) const {
 }
 
 
-ConstantIr::ConstantIr(int value)
-    : value(value) {
+ConstantIr::ConstantIr(std::string value,std::string type)
+    :Address(type), value(value){
 }
 
 void ConstantIr::write(std::ostream &stream) const {
@@ -79,20 +76,22 @@ void ConstantIr::write(std::ostream &stream) const {
     stream << "$" << this->value;
 
   
-  LOG_INFO(" THIS IS THE CONST size=0 type =, value = "<<"11"<< this->value);
+  LOG_INFO(" THIS IS THE CONST size=0 type =, value = "<<"  "<< this->value<<"\n");
 }
 unsigned long long TemporaryVariableIr::idGlobal = 0;
 TemporaryVariableIr::TemporaryVariableIr()
-    : id(idGlobal++) {
+    :Address("temp"), id(idGlobal++) {
+      LOG_INFO("TemporaryVariableIr GEN SUCCUSSE"<<idGlobal<<"\n");
 }
 TemporaryVariableIr::TemporaryVariableIr(unsigned long long id)
-    : id(id) {
+    : Address("temp"),id(id) {
 }
 
 void TemporaryVariableIr::write(std::ostream &stream) const {
-  LOG_INFO("TemporaryVariableIr SU "<< id);
+ 
 
-  stream << "_t" << this-> id;
+  stream << "_t" << id;
+  LOG_INFO("TemporaryVariableIr WRITE SUCCUSSE: _t"<<id<<"\n");
 }
 
 ThreeAddressCode::ThreeAddressCode(Address *left, Address *right)
@@ -110,12 +109,44 @@ ExpressionIr::ExpressionIr(Address *result, Address *left, Address *right, std::
 ExpressionIr::ExpressionIr(Address *left, Address *right, std::string ir_operator)
     : ExpressionIr(nullptr, left, right, ir_operator) {
 }
+// void ExpressionIr::genByteCode(std::ostream &stream){
+//   stream<< "iload " << this->left<<"\n";
+//   stream<< "iload " << this->right<<"\n";
+//   if(ir_operator=="+"){
+//     stream<< "iadd " <<"\n";
+//   }else if(ir_operator=="-"){
+//     stream<< "isub " <<"\n";
+//   }
+//   else if(ir_operator=="*"){
+//     stream<< "imul " <<"\n";
+//   }
+//   else if(ir_operator=="/"){
+//     stream<< "idiv " <<"\n";
+//   }else if(ir_operator=="&&"){
+//     stream<< "iand " <<"\n";
+//   }else if(ir_operator=="<"){
+//     stream<< "ilt " <<"\n";
+//   }else if(ir_operator==">"){
+//     stream<< "iadd " <<"\n";
+//   }else if(ir_operator=="||"){
+//     stream<< "iadd " <<"\n";
+//   }else if(ir_operator=="!"){
+//     stream<< "inot " <<"\n";
+//   }
+//   if(this->result!=nullptr){
+//     stream<<"istore "<<this->result;
+//   }
+
+// }
 
 void ExpressionIr::write(std::ostream &stream) const {
 
   stream << this->result << " := " << this->left << " " << this->ir_operator << " " << this->right;
-  LOG_INFO("ExpressionIr SU");
+  LOG_INFO("ExpressionIr SU "<<this->result << " := " << this->left << " " << this->ir_operator << " " << this->right<<"\n");
 }
+// void ExpressionIr::genBytecode(BasicBlock *currentBlock,std::ostream &stream)const{
+  
+// }
 
 UnaryExpressionIr::UnaryExpressionIr(Address *result, Address *operand, std::string ir_operator)
     : ThreeAddressCode(result, operand, nullptr), ir_operator(ir_operator) {
@@ -126,8 +157,8 @@ UnaryExpressionIr::UnaryExpressionIr(Address *operand, std::string ir_operator)
 
 void UnaryExpressionIr::write(std::ostream &stream) const {
   
+  LOG_INFO("UnaryExpressionIr SU "<<this->result << " := " << this->ir_operator << " " <<"\n");
   stream << this->result << " := " << this->ir_operator << " " << this->left;
-  LOG_INFO("UnaryExpressionIr SU");
 }
 
 CopyIr::CopyIr(Address *operand)
@@ -247,3 +278,36 @@ void ConditionalJumpIr::write(std::ostream &stream) const {
     LOG_INFO("ConditionalJumpIr SU");
 
 }
+
+ PrintCallIr::PrintCallIr(Address *target)
+        :ThreeAddressCode(target,nullptr){
+}
+// void PrintCallIr::genByteCode(std::ostream &stream){
+//   stream<<"print "<< this->left;
+// }
+void PrintCallIr::write(std::ostream &stream) const {
+  stream << "call print " <<this->left;
+    LOG_INFO("PrintCallIr SU");
+
+}
+// void UnaryExpressionIr::genByteCode(std::ostream &stream){
+// }
+// void CopyIr::genByteCode(std::ostream &stream){
+// }
+// void ArrayAccessIr::genByteCode(std::ostream &stream){
+// }
+// void NewIr::genByteCode(std::ostream &stream){
+// }
+// void NewArrayIr::genByteCode(std::ostream &stream){
+// }
+// void PushIr::genByteCode(std::ostream &stream){
+// }
+// void MethodCallIr::genByteCode(std::ostream &stream){
+// }
+// void ReturnIr::genByteCode(std::ostream &stream){
+// }
+// void UnconditionalJumpIr::genByteCode(std::ostream &stream){
+// }
+
+// void ConditionalJumpIr::genByteCode(std::ostream &stream){
+// }

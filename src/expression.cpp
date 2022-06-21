@@ -14,15 +14,23 @@ void* Expression::genIR(BasicBlock* currentBlock) {
     
 
     size_t size = children.size();
-   
+    
     
     LOG_INFO("Size of experession!!!!!!!!!!!!!!!!!!!!!!!!!! : " << children.size());
     if(size==1){
+        
         string type = this->children.at(0)->getType();
+        
         string value= this->children.at(0)->getValue();
-        Address *address =  Address::getAddressFromType(type,value);
-        LOG_INFO("HERE IS THE SOLUTION!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! "<< type<< "  "<< value);
-        return (void*) address;
+        if(type=="PrimaryExpression"||type=="UnaryExpression"||type=="CompareExpression"||type=="ArithExpression"||type=="ArraySearchExpression"||type=="ArrayLengthExpression"){
+            Address* result =(Address*) children.at(0)->genIR(currentBlock);
+            return (void*)result;
+        }else{
+
+            Address *address =  Address::getAddressFromType(type,value);
+            LOG_INFO("HERE IS THE SOLUTION!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! "<< type<< "  "<< value);
+            return (void*) address;
+        }
     }
     if(size==3){
         LOG_INFO("Method call 3: "<<value<< "type "<<type<<" child size: ");
