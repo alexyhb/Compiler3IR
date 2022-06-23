@@ -1,46 +1,5 @@
-iload 4
-iload 2
-imul
-istore
-iload 10
-iadd
-istore
-iload 2
-iload 6
-imul
-istore
-isub
-istore
-iload 4
-iload 1
-isub
-istore
-iload 2
-imul
-istore
-iload 2
-idiv
-istore
-iadd
-istore
 print
-inot true
-iload false
-iand
-istore
-iload true
-iequ
-istore
-iload 10
-iload 1
-ilst
-istore
-iload 1
-iload 10
+iload num
+iload 2
 ilgt
 istore
-iand
-istore
-ior
-istore
-print

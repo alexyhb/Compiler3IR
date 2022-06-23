@@ -15,7 +15,7 @@ private:
     std::map<std::string ,ControlFlowGraph*> cfgs;
 public:
     IrGen(std::shared_ptr<Node> codeStruct);
-    void generateIr(std::ostream &stream);
+    void generateIr();
     void generateBytecode(std::ostream &stream);
     void write_bytecode(std::ostream &stream) const;
     void write_cfg(std::ostream &stream) const;

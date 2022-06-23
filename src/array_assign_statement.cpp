@@ -39,7 +39,7 @@ void* ArrayAssignStatement::genIR(BasicBlock *currentBlock)
         Address* addrLhs = (Address*)children.at(1)->genIR(currentBlock);
         Address* addrRhs =(Address*)children.at(2)->genIR(currentBlock);
         std::string operatorString = getValue();
-        ThreeAddressCode* in = new ArrayAccessIr(result,addrLhs,addrRhs);
+        ThreeAddressCode* in = new ArrayAccessIr(result,addrLhs,addrRhs,value);
         currentBlock->add_code(in);
 
     }
@@ -50,7 +50,7 @@ void* ArrayAssignStatement::genIR(BasicBlock *currentBlock)
         Address* addrLhs = (Address*)children.at(1)->genIR(currentBlock);
         Address* addrRhs =(Address*)children.at(2)->genIR(currentBlock);
         std::string operatorString = getValue();
-        ThreeAddressCode* in = new ArrayAccessIr(result,addrLhs,addrRhs);
+        ThreeAddressCode* in = new ArrayAccessIr(result,addrLhs,addrRhs,value);
         currentBlock->add_code(in);
     }
     

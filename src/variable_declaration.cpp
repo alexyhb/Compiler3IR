@@ -36,9 +36,12 @@ std::optional<string> VarDeclaration::checkSemantics() {
 
     return std::nullopt;
 }
-void* VarDeclaration::genIR(BasicBlock* BB) {
-    for (const auto &child : this->children) {
-            child->genIR(BB);
-    }
-   
+void* VarDeclaration::genIR(BasicBlock* currentBlock) {
+        // Address* addrLhs = (Address*)children.at(0)->genIR(currentBlock);
+        // Address* addrRhs =(Address*)children.at(1)->genIR(currentBlock);
+        std::string t=children.at(0)->getType();
+        std::string v=children.at(1)->getValue();
+        Address *result=Address::getAddressFromType(t,v);
+        return (void*)result;
+        
 }

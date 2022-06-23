@@ -16,3 +16,10 @@ void* Declarations::genIR(BasicBlock *currentBlock)
     // currentBlock->add_code(in);
     //return (void*)result;
 }
+void* Declarations::genIR(std::map<std::string ,ControlFlowGraph*> &cfgs)
+{
+    for(auto &child: children){
+        child->genIR(cfgs);
+    }
+  
+}

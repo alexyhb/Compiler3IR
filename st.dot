@@ -5,15 +5,38 @@ labelloc="t";
 node [shape=rect, fontname=Arial, width=5];
 
 n0 [label=<<U><B>Program</B></U><BR/><BR/>
-name: Minimal; record: Class; type: Minimal<BR/>
+name: Bar1; record: Class; type: Bar1<BR/>
+name: Bar; record: Class; type: Bar<BR/>
 >];
 n0 -- n1;
-n1 [label=<<U><B>Class: Minimal</B></U><BR/><BR/>
+n1 [label=<<U><B>Class: Bar</B></U><BR/><BR/>
 name: main; record: Method; type: void<BR/>
-name: this; record: Variable; type: Minimal<BR/>
+name: this; record: Variable; type: Bar<BR/>
 >];
 n1 -- n2;
 n2 [label=<<U><B>Method: main</B></U><BR/><BR/>
 name: a; record: Parameter; type: String[]<BR/>
+>];
+n0 -- n3;
+n3 [label=<<U><B>Class: Bar1</B></U><BR/><BR/>
+name: foo3; record: Method; type: int<BR/>
+name: foo2; record: Method; type: int<BR/>
+name: foo; record: Method; type: int<BR/>
+name: this; record: Variable; type: Bar1<BR/>
+>];
+n3 -- n4;
+n4 [label=<<U><B>Method: foo</B></U><BR/><BR/>
+name: aux2; record: Variable; type: boolean<BR/>
+name: aux; record: Variable; type: int<BR/>
+>];
+n3 -- n5;
+n5 [label=<<U><B>Method: foo2</B></U><BR/><BR/>
+name: p1; record: Parameter; type: int<BR/>
+>];
+n3 -- n6;
+n6 [label=<<U><B>Method: foo3</B></U><BR/><BR/>
+name: p3; record: Parameter; type: boolean<BR/>
+name: p2; record: Parameter; type: int<BR/>
+name: p1; record: Parameter; type: int<BR/>
 >];
 }

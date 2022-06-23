@@ -21,8 +21,8 @@ std::optional<string> IfStatement::checkSemantics() {
 
 void* IfStatement::genIR(BasicBlock *currentBlock)
 {
-  //  LOG_INFO("IF statment");
-    children.at(0)->genIR(currentBlock);
+    LOG_INFO("IF statment");
+    Address *condition=(Address*)children.at(0)->genIR(currentBlock);
     //Address* result = Address::getAddressFromType(type,value);
     BasicBlock* trueBrunch = new BasicBlock();
     Address* trueAddress = (Address*)children.at(1)->genIR(trueBrunch);
@@ -33,5 +33,10 @@ void* IfStatement::genIR(BasicBlock *currentBlock)
     falseBrunch->positive_branch = jumpBrunch;
     currentBlock->positive_branch = trueBrunch;
     currentBlock->negative_branch = falseBrunch;
-    return jumpBrunch;
+    ThreeAddressCode *in=new ConditionalJumpIr(condition,trueAddress);
+    ThreeAddressCode *in2=new UnconditionalJumpIr(falseAddress);
+    
+    currentBlock->add_code(in);
+    currentBlock->add_code(in2);
+    return (void*)jumpBrunch;
 }

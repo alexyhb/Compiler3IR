@@ -52,9 +52,8 @@ void* ClassDeclaration::genIR(BasicBlock *currentBlock)
 }
 void* ClassDeclaration::genIR(std::map<std::string ,ControlFlowGraph*> &cfgs)
 {
-    ControlFlowGraph * controlFlowGraph = new ControlFlowGraph();
-     LOG_INFO("!!!!!!!!!!!!!");
-    cfgs[children.at(0)->getValue()] = controlFlowGraph;
-    children.at(1)->genIR(controlFlowGraph->entry_point);
-    return nullptr;
+    for(auto &child: children){
+        child->genIR(cfgs);
+    }
+  
 }

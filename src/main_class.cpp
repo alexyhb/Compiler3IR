@@ -6,7 +6,7 @@ MainClass::MainClass() : Node() {}
 MainClass::MainClass(string t, string v) : Node(std::move(t), std::move(v)) {}
 void* MainClass::genIR(std::map<std::string ,ControlFlowGraph*> &cfgs)
 {
-   // LOG_INFO("Main start the IRGEN");
+    LOG_INFO("Main start the IRGEN");
     ControlFlowGraph * controlFlowGraph = new ControlFlowGraph();
     cfgs[children.at(0)->getValue()] = controlFlowGraph;
     children.at(2)->genIR(controlFlowGraph->entry_point);
@@ -53,7 +53,7 @@ std::optional<string> MainClass::checkSemantics() {
 void* MainClass::genIR(BasicBlock *currentBlock)
 {
     for(auto &child: children){
-//LOG_INFO("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!MainClass override the GENIR, value="<<value<<"type:"<<type<< "children size"<< children.size());
+    LOG_INFO("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!MainClass override the GENIR, value="<<value<<"type:"<<type<< "children size"<< children.size());
         child->genIR(currentBlock);
     }
     // Address* result = Address::getAddressFromType();

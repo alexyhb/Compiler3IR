@@ -9,6 +9,8 @@ public:
     Declarations(std::string t, std::string v);
     ~Declarations() override = default;
     void* genIR(BasicBlock* BB);
+    void* genIR(std::map<std::string ,ControlFlowGraph*> &cfgs);
+
 };
 
 #endif

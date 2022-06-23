@@ -18,13 +18,11 @@ std::optional<string> AllocExpression::checkSemantics() {
 }
 void* AllocExpression::genIR(BasicBlock* currentBasicBlock)
 {
-    //LOG_INFO(children.at(0)->getType()<<","<<children.at(0)->getValue());
+    LOG_INFO("ALLOC"<<children.at(0)->getType()<<","<<children.at(0)->getValue());
     Address *tmpVar = Address::getAddressFromType();
-    Address *tmp = Address::getAddressFromType(children.at(0)->getType(),children.at(0)->getValue());
+    Address *tmp = (Address*)children.at(0)->genIR(currentBasicBlock);
     ThreeAddressCode *newIR = new NewIr(tmpVar,tmp);
-    ThreeAddressCode *parameterIR = new ParameterIr(tmpVar);
     currentBasicBlock->add_code(newIR);
-    currentBasicBlock->add_code(parameterIR);
 
-    return nullptr;
+    return (void*) tmpVar;
 }

@@ -10,8 +10,10 @@ void VM::translate(){
     stack<string> stk,temp;
     size_t npos = -1; 
 while(getline(in,s)){
+   // LOG_INFO(stk.top()<<" "<<s);
     size_t pos = s.find(" ");  
     size_t ifNot= s.find("inot ");
+   
     if(pos!=npos){
         string value = s.substr(pos);
             // LOG_INFO("iload"<< value << " "<<stk.size());
@@ -31,16 +33,7 @@ while(getline(in,s)){
             string res=stk.top();
             stk.pop();
             cout<<res<<endl;
-        }else if(s=="inot"){
-            // LOG_INFO("inot"<<stk.size());
-
-            string res=stk.top();
-            string result= res=="true" ? "false": "true";
-            
-            stk.pop();
-            stk.push(result);
-            
-        }
+        } 
         else{
            
             // LOG_INFO("calc1 :"<<stk.size());
@@ -55,8 +48,26 @@ while(getline(in,s)){
         }
         
     }
-    
+    if(ifNot!=npos){
+             //LOG_INFO("inot!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1"<<stk.size());
+            string value=s.substr(ifNot);
+            
+            string res=stk.top();
+            //LOG_INFO(res);
+            string result;
+            if(res==" true"){
+                result="false";
+            }else{
+                result="true";
+            }
+          
+            //LOG_INFO((res=="true")<<" " <<result);
+            stk.pop();
+            stk.push(result);
+            
+        }
 }
+
     in.close();
 }
 
@@ -105,7 +116,8 @@ string VM::cacl(string left,string right, string oper){
 
         bool l= left=="true" ? true: false;
         bool r= right=="true" ? true: false;
-        res=to_string( l||r);
+        string str=(l||r) ? "true": "false";
+        res=str;
 
     }
         if(oper=="iequ"){
@@ -113,7 +125,7 @@ string VM::cacl(string left,string right, string oper){
 
         bool l= left=="true" ? true: false;
         bool r= right=="true" ? true: false;
-        res=to_string( l==r);
+        res=( l==r)?"true": "false";
 
     }
     
@@ -122,6 +134,8 @@ string VM::cacl(string left,string right, string oper){
 
         bool l= left=="true" ? true: false;
         bool r= right=="true" ? true: false;
+        string str=(l||r) ? "true": "false";
+
         res=to_string( l&&r);
     }
     

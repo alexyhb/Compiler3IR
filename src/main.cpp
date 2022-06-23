@@ -94,10 +94,12 @@ int main(int argc, char *argv[]) {
 
     root->semanticAnalysis();
     IrGen irGen(root);
-    irGen.generateIr(std::cout);
+    irGen.generateIr();
     std::ofstream st_cfg_stream;
     st_cfg_stream.open("cfg.dot", std::ios::out);
+    LOG_INFO("WRITING START");
     irGen.write_cfg(st_cfg_stream);
+    LOG_INFO("WRITING END");
     st_dot_stream.close();
 
     // CodeGen* gen = new CodeGen( &(*root) );
@@ -105,9 +107,13 @@ int main(int argc, char *argv[]) {
     // return EXIT_SUCCESS;
 
     std::ofstream bytecode_stream;
+    LOG_INFO("BYTE START");
+
     bytecode_stream.open("out.class", std::ios::out);
     irGen.write_bytecode(bytecode_stream);
     bytecode_stream.close();
+    LOG_INFO("BYTE END");
+
 
     VM *vm1=new VM();
     vm1->translate();

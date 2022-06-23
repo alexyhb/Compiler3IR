@@ -14,6 +14,7 @@ std::optional<string> MethodBody::generateST() {
 }
 void* MethodBody::genIR(BasicBlock* BB) {
     for (const auto &child : this->children) {
+            LOG_INFO("METHOD BODY IR");
             child->genIR(BB);
     }
    

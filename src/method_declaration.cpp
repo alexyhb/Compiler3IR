@@ -59,3 +59,14 @@ std::optional<string> MethodDeclaration::checkSemantics() {
     return std::nullopt;
 }
 
+void* MethodDeclaration::genIR(std::map<std::string ,ControlFlowGraph*> &cfgs)
+{
+    ControlFlowGraph * controlFlowGraph = new ControlFlowGraph();
+     LOG_INFO("!!!!!!!!!!!!!");
+    cfgs[children.at(0)->getValue()] = controlFlowGraph;
+    for(auto &child: children){
+        child->genIR(controlFlowGraph->entry_point);
+
+    }
+    return nullptr;
+}

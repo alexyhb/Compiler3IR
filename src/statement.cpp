@@ -9,13 +9,7 @@ std::optional<string> Statement::generateST() {
 }
 void* Statement::genIR(BasicBlock* BB) {
     //LOG_INFO("statements or statement:"<<value <<" "<< children.size());
-    if(children.size()==1){
-        children.at(0)->genIR(BB);
-
-    }
-    if(children.size()==2){
-        children.at(0)->genIR(BB);
-        children.at(1)->genIR(BB);
-
+    for( auto &child: children){
+        child->genIR(BB);
     }
 }

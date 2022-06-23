@@ -22,38 +22,41 @@ void* Expression::genIR(BasicBlock* currentBlock) {
         string type = this->children.at(0)->getType();
         
         string value= this->children.at(0)->getValue();
-        if(type=="PrimaryExpression"||type=="UnaryExpression"||type=="CompareExpression"||type=="ArithExpression"||type=="ArraySearchExpression"||type=="ArrayLengthExpression"){
+        if(type=="PrimaryExpression"||type=="UnaryExpression"||type=="CompareExpression"||type=="ArithExpression"||type=="ArraySearchExpression"||type=="ArrayLengthExpression"||type=="keyword"){
             Address* result =(Address*) children.at(0)->genIR(currentBlock);
             return (void*)result;
         }else{
-
+            LOG_INFO("here"<<type<<value);
             Address *address =  Address::getAddressFromType(type,value);
             return (void*) address;
         }
     }
     if(size==3){
         LOG_INFO("Method call 3: "<<value<< "type "<<type<<" child size: ");
+        Address* result = Address::getAddressFromType(type,value);
+        Address* addrLhs = (Address*)children.at(0)->genIR(currentBlock);
         LOG_INFO("Children0:" << children.at(0)->getValue());
-        LOG_INFO("Children1:" << children.at(1)->getValue());
-        LOG_INFO("Children2:" << children.at(2)->getValue());
-        Address* result = Address::getAddressFromType();
-       //Address* addrLhs = (Address*)children.at(0)->genIR(currentBlock);
         Address* addrRhs =(Address*)children.at(1)->genIR(currentBlock);
-        Address* addrRhs2 =(Address*)children.at(2)->genIR(currentBlock);
+        LOG_INFO("Children1:" << children.at(1)->getValue()<<children.at(1)->getType() );
+        Address* params =(Address*)children.at(2)->genIR(currentBlock);
+        LOG_INFO("Children2:" << children.at(2)->getValue());
 
     // //     Address* result = (Address*)children.at(0)->genIR(currentBlock);
     // //     Address* addrLhs = (Address*)children.at(1)->genIR(currentBlock);
     // //     Address* addrRhs =(Address*)children.at(2)->genIR(currentBlock);
-        ThreeAddressCode* in = new MethodCallIr(result,addrRhs,addrRhs2);
-          currentBlock->add_code(in);
+        ThreeAddressCode* in = new MethodCallIr(result,addrLhs,addrRhs,params);
+        currentBlock->add_code(in);
+        return (void*)result;
     }
     if(size==2){
         LOG_INFO("Method call 2: "<<value<< "type "<<type<<" child size: ");
         LOG_INFO("Children0:" << children.at(0)->getValue());
         LOG_INFO("Children1:" << children.at(1)->getValue());
+        Address* result = Address::getAddressFromType();
+
         Address* addrLhs = (Address*)children.at(0)->genIR(currentBlock);
         Address* addrRhs =(Address*)children.at(1)->genIR(currentBlock);
-        ThreeAddressCode* in = new MethodCallIr(addrLhs,addrRhs);
+        ThreeAddressCode* in = new MethodCallIr(result,addrLhs,addrRhs);
         currentBlock->add_code(in);
     }
     // else if(size==3 && (type == "AllocExpression"|| type == "PrimaryExpression"||type == "keyword")){

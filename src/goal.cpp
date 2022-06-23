@@ -17,7 +17,7 @@ std::optional<string> Goal::generateST() {
 }
 
 void* Goal::genIR(BasicBlock* BB) {
-    LOG_INFO("Goald start IR 0");
+  // LOG_INFO("Goald start IR 0");
 
     for(auto &child: children){
    // LOG_INFO("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!Goal override the GENIR, value="<<value<<"type:"<<type<< "children size"<< children.size());

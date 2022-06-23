@@ -91,7 +91,8 @@ public:
 
 class ArrayAccessIr : public ThreeAddressCode {
 public:
-  ArrayAccessIr(Address *result,Address *left, Address *right);
+  std::string pos;
+  ArrayAccessIr(Address *result,Address *left, Address *right,std::string pos);
   void write(std::ostream &stream) const;
   void genByteCode(std::ostream &stream) const;
 
@@ -101,7 +102,7 @@ public:
 class NewIr : public ThreeAddressCode {
 public:
   NewIr(Address *result,Address *operand);
-  NewIr(Address *result);
+  //NewIr(Address *result);
   void write(std::ostream &stream) const;
   void genByteCode(std::ostream &stream) const;
 
@@ -137,9 +138,9 @@ public:
 
 class MethodCallIr : public ThreeAddressCode {
 public:
- 
-  MethodCallIr(Address *result, Address *left, Address *right);
-  MethodCallIr(Address *left, Address *right);
+  Address *params;
+  MethodCallIr(Address *result, Address *left, Address *right,Address *params);
+  MethodCallIr(Address *result, Address *left,Address *right);
   void write(std::ostream &stream) const;
   void genByteCode(std::ostream &stream) const;
 
