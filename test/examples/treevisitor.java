@@ -216,7 +216,7 @@ class Tree {
                 if (is_root) {
                     if (!current_node.GetHas_Right() &&
                             !current_node.GetHas_Left()) {
-                        ntb = true;
+                        ntb = true;//block53 ntb:=true
                     } else {
                         ntb = this.Remove(parent_node, current_node);
                     }

@@ -26,7 +26,7 @@ std::optional<string> AssignStatement::checkSemantics() {
 }
 void* AssignStatement::genIR(BasicBlock *currentBlock)
 {
-    LOG_INFO("here");
+   
     if(children.size()>1){
         // Address* result = Address::getAddressFromType();/
         Address* addrLhs = (Address*)children.at(0)->genIR(currentBlock);

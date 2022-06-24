@@ -32,10 +32,11 @@ Address *Address::getAddressFromType(const std::string &type, const std::string 
     return new TemporaryVariableIr();
   }
   else if (type == "Identifier")
+
     return new VariableIr(valueString, "var");
   else if (type == "int")
   {
-    LOG_INFO("return constant IR: " << valueString);
+    // LOG_INFO("return constant IR: " << valueString);
     return new ConstantIr(valueString, "const");
   }
   else if (type == "boolean")
@@ -45,7 +46,7 @@ Address *Address::getAddressFromType(const std::string &type, const std::string 
   }
   else
   {
-    LOG_INFO(" WHY ???????????????????????????????????????????????????????????????????????????????????????????????????   " << type << " " << valueString);
+    // LOG_INFO(" WHY ???????????????????????????????????????????????????????????????????????????????????????????????????   " << type << " " << valueString);
     return new TemporaryVariableIr();
   }
 }
@@ -61,8 +62,9 @@ VariableIr::VariableIr(std::string identifier, std::string type)
 
 void VariableIr::write(std::ostream &stream) const
 {
+   LOG_INFO("VariableIr start " << identifier);
   stream << this->identifier;
-  LOG_INFO("VariableIr SU " << identifier);
+   LOG_INFO("VariableIr SU " << identifier);
 }
 
 ConstantIr::ConstantIr(std::string value, std::string type)
@@ -73,18 +75,17 @@ ConstantIr::ConstantIr(std::string value, std::string type)
 void ConstantIr::write(std::ostream &stream) const
 {
 
-  LOG_INFO("ConstantIr SU" << value);
+  // LOG_INFO("ConstantIr SU" << value);
 
   stream << this->value;
 
-  LOG_INFO(" THIS IS THE CONST size=0 type =, value = "
-           << "  " << this->value << "\n");
+  // LOG_INFO(" THIS IS THE CONST size=0 type =, value = "<< "  " << this->value << "\n");
 }
 unsigned long long TemporaryVariableIr::idGlobal = 0;
 TemporaryVariableIr::TemporaryVariableIr()
     : Address("temp"), id(idGlobal++)
 {
-  LOG_INFO("TemporaryVariableIr GEN SUCCUSSE" << idGlobal << "\n");
+  // LOG_INFO("TemporaryVariableIr GEN SUCCUSSE" << idGlobal << "\n");
 }
 TemporaryVariableIr::TemporaryVariableIr(unsigned long long id)
     : Address("temp"), id(id)
@@ -94,8 +95,8 @@ TemporaryVariableIr::TemporaryVariableIr(unsigned long long id)
 void TemporaryVariableIr::write(std::ostream &stream) const
 {
 
-  stream << "_t" << id;
-  LOG_INFO("TemporaryVariableIr WRITE SUCCUSSE: _t" << id << "\n");
+  stream << "_t" << this->id;
+  // LOG_INFO("TemporaryVariableIr WRITE SUCCUSSE: _t" << id << "\n");
 }
 
 ThreeAddressCode::ThreeAddressCode(Address *left, Address *right)
@@ -190,7 +191,7 @@ void ExpressionIr::write(std::ostream &stream) const
 {
 
   stream << this->result << " := " << this->left << " " << this->ir_operator << " " << this->right;
-  LOG_INFO("ExpressionIr SU " << this->result << " := " << this->left << " " << this->ir_operator << " " << this->right << "\n");
+  // LOG_INFO("ExpressionIr SU " << this->result << " := " << this->left << " " << this->ir_operator << " " << this->right << "\n");
 }
 // void ExpressionIr::genBytecode(BasicBlock *currentBlock,std::ostream &stream)const{
 
@@ -208,8 +209,7 @@ UnaryExpressionIr::UnaryExpressionIr(Address *operand, std::string ir_operator)
 void UnaryExpressionIr::write(std::ostream &stream) const
 {
 
-  LOG_INFO("UnaryExpressionIr SU " << this->result << " := " << this->ir_operator << " "
-                                   << "\n");
+  // LOG_INFO("UnaryExpressionIr SU " << this->result << " := " << this->ir_operator << " "<< "\n");
   stream << this->result << " := " << this->ir_operator << " " << this->left;
 }
 
@@ -233,7 +233,7 @@ void CopyIr::write(std::ostream &stream) const
   {
     stream << this->result << " := " << this->left;
   }
-  LOG_INFO("CopyIr SU");
+  // LOG_INFO("CopyIr SU");
 }
 
 ArrayAccessIr::ArrayAccessIr(Address *result, Address *left, Address *right, std::string pos)
@@ -251,7 +251,7 @@ void ArrayAccessIr::write(std::ostream &stream) const
   {
     stream << this->result << " :=[ " << this->left << "] " << this->right;
   }
-  LOG_INFO("ArrayAccessIr SU");
+  // LOG_INFO("ArrayAccessIr SU");
 }
 
 NewIr::NewIr(Address *result, Address *operand)
@@ -267,7 +267,7 @@ void NewIr::write(std::ostream &stream) const
 {
   stream << this->result<<" := new " << this->left;
   
-  LOG_INFO("NewIr SU");
+  // LOG_INFO("NewIr SU");
 }
 
 NewArrayIr::NewArrayIr(Address *left, Address *right)
@@ -278,7 +278,7 @@ NewArrayIr::NewArrayIr(Address *left, Address *right)
 void NewArrayIr::write(std::ostream &stream) const
 {
   stream << this->result << " := new " << this->left << "[" << this->right << "]";
-  LOG_INFO("NewArrayIr SU");
+  // LOG_INFO("NewArrayIr SU");
 }
 
 PushIr::PushIr(Address *operand)
@@ -289,7 +289,7 @@ PushIr::PushIr(Address *operand)
 void PushIr::write(std::ostream &stream) const
 {
   stream << "push " << this->left;
-  LOG_INFO("PushIr SU");
+  // LOG_INFO("PushIr SU");
 }
 
 ParameterIr::ParameterIr(Address *operand)
@@ -300,10 +300,10 @@ ParameterIr::ParameterIr(Address *operand)
 void ParameterIr::write(std::ostream &stream) const
 {
   stream << "param " << this->left;
-  LOG_INFO("ParameterIr SU");
+  // LOG_INFO("ParameterIr SU");
 }
 
-MethodCallIr::MethodCallIr(Address *result, Address *left, Address *right, Address *params)
+MethodCallIr::MethodCallIr(Address *result, Address *left, Address *right, ParamListIr *params)
     : ThreeAddressCode(result, left, right), params(params)
 {
 }
@@ -314,15 +314,24 @@ MethodCallIr::MethodCallIr(Address *result, Address *left, Address *right)
 }
 void MethodCallIr::write(std::ostream &stream) const
 {
-  LOG_INFO("here?");
+  // LOG_INFO("here?");
   if (this->params == nullptr){
-    LOG_INFO("here? ()");
+    // LOG_INFO("here? ()");
     stream << this->result << ":= call " << this->left << "." << this->right << "()";
 
   }
   else{
-    LOG_INFO("here?(param)");
-    stream << this->result << " := call " << this->left << "." << this->right << "(" << params << ")";
+     LOG_INFO("here?(param)"<<this->result->type);
+    stream << this->result << " := call " ;
+     LOG_INFO("here?(param)"<<this->left->type);
+
+    stream<< this->left << "." ;
+     LOG_INFO("here?(param)"<<this->right->type);
+
+    stream << this->right ;
+     LOG_INFO("here?(params)");
+
+    stream << this->params ;
 
   }
 }
@@ -340,7 +349,7 @@ ReturnIr::ReturnIr()
 void ReturnIr::write(std::ostream &stream) const
 {
   stream << "return " << this->left;
-  LOG_INFO("ReturnIr SU");
+  // LOG_INFO("ReturnIr SU");
 }
 
 UnconditionalJumpIr::UnconditionalJumpIr(Address *operand)
@@ -351,7 +360,7 @@ UnconditionalJumpIr::UnconditionalJumpIr(Address *operand)
 void UnconditionalJumpIr::write(std::ostream &stream) const
 {
   stream << "goto " << this->left;
-  LOG_INFO("UnconditionalJumpIr SU");
+  // LOG_INFO("UnconditionalJumpIr SU");
 }
 
 ConditionalJumpIr::ConditionalJumpIr(Address *condition, std::string falseBranchIdentify)
@@ -362,7 +371,7 @@ ConditionalJumpIr::ConditionalJumpIr(Address *condition, std::string falseBranch
 void ConditionalJumpIr::write(std::ostream &stream) const
 {
   stream << "if true" << this->left << " goto " << this->falseBranchIdentify;
-  LOG_INFO("ConditionalJumpIr SU");
+  // LOG_INFO("ConditionalJumpIr SU");
 }
 
 PrintCallIr::PrintCallIr(Address *target)
@@ -377,8 +386,40 @@ void PrintCallIr::genByteCode(std::ostream &stream) const
 void PrintCallIr::write(std::ostream &stream) const
 {
   stream << "call print " << this->left;
-  LOG_INFO("PrintCallIr SU");
+  // LOG_INFO("PrintCallIr SU");
 }
+
+ParamListIr::ParamListIr(std::vector<Address*> resultlist)
+    : ThreeAddressCode(nullptr, nullptr,nullptr),resultlist(resultlist)
+{
+}
+void ParamListIr::write(std::ostream &stream) const
+{
+  LOG_INFO("start ParamList");
+  stream << "( " ;
+  	 for(auto &child: this->resultlist){
+      LOG_INFO(" ParamId :"<<child->get_id());
+
+       stream<<child<<",";
+	    }	
+  stream <<")";
+
+  // LOG_INFO("ParamListIr SU");
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 void UnaryExpressionIr::genByteCode(std::ostream &stream) const
 {
@@ -413,5 +454,9 @@ void UnconditionalJumpIr::genByteCode(std::ostream &stream) const
 }
 
 void ConditionalJumpIr::genByteCode(std::ostream &stream) const
+{
+}
+
+void ParamListIr::genByteCode(std::ostream &stream) const
 {
 }

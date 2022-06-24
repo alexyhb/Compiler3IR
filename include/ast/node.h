@@ -3,13 +3,14 @@
 #include <cstdlib>
 #include <fstream>
 #include <string.h>
+#include <iostream>
 #include "method.h"
 #include "parameter.h"
 #include "st_class.h"
 #include "symbol_table.h"
 #include "variable.h"
 #include "cfg.h"
-#define LOG_INFO(x) std::cout<<(strchr(__FILE__,'/')==NULL?__FILE__:strchr(__FILE__,'/')+1)<<":"<<__FUNCTION__<<":"<<__LINE__<<": "<<x<<std::endl
+// #define LOG_INFO(x) std::cout<<(strchr(__FILE__,'/')==NULL?__FILE__:strchr(__FILE__,'/')+1)<<":"<<__FUNCTION__<<":"<<__LINE__<<": "<<x<<std::endl
 
 class Node {
 protected:

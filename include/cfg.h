@@ -10,7 +10,7 @@
 #include <fstream>
 #include <string.h>
 #include "ir.h"
-#define LOG_INFO(x) std::cout<<(strchr(__FILE__,'/')==NULL?__FILE__:strchr(__FILE__,'/')+1)<<":"<<__FUNCTION__<<":"<<__LINE__<<": "<<x<<std::endl
+ #define LOG_INFO(x) std::cout<<(strchr(__FILE__,'/')==NULL?__FILE__:strchr(__FILE__,'/')+1)<<":"<<__FUNCTION__<<":"<<__LINE__<<": "<<x<<std::endl
 
 using namespace ir;
 
@@ -29,7 +29,7 @@ public:
   BasicBlock(BasicBlock *positive_branch, BasicBlock *negative_branch);
   void genByteCode(std::ostream &stream,std::map<long, bool> &visited);
   int getBlockId() const;
-  BasicBlock findJoinBlock(BasicBlock *basicBlock);
+  BasicBlock* findJoinBlock(BasicBlock *basicBlock);
   void add_code(ir::ThreeAddressCode *code);
   void set_identifier(std::string identifier, ir::Address *result);
   void set_condition(ir::ThreeAddressCode *condition);

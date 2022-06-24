@@ -14,8 +14,16 @@ std::optional<string> MethodBody::generateST() {
 }
 void* MethodBody::genIR(BasicBlock* BB) {
     for (const auto &child : this->children) {
-            LOG_INFO("METHOD BODY IR");
+            //LOG_INFO("METHOD BODY IR");
+            
+
+        if(child->getType()=="Return"){
+            BasicBlock *jointBlock= BB->findJoinBlock(BB);
+        child->genIR(jointBlock);
+          //  LOG_INFO("Now return");
+        }else{
             child->genIR(BB);
+        }
     }
    
 }

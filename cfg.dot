@@ -1,32 +1,26 @@
 digraph {
 graph [splines=ortho]
 node [shape=box];
+subgraph "clusterRecursiveSum" {
+label = "RecursiveSum";
+block_1[shape=box label="block_1
+_t1 := new Test\n_t0 := call _t1.Sum0x55d950047220\ncall print _t0\n"];
+}
 subgraph "clusterSum" {
 label = "Sum";
 block_2[shape=box label="block_2
-sum := 0\n_t5 := 0 < num\nreturn sum\n"];
+_t5 := num < 2\nif true_t5 goto block_4\n"];
 block_2 -> block_4[xlabel="true"];
 block_4[shape=box label="block_4
-if true_t5 goto block_5\n"];
-block_4 -> block_5[xlabel="true"];
+sum := 1\n"];
+block_4 -> block_3[xlabel="true"];
+block_3[shape=box label="block_3
+return sum\n"];
+block_2 -> block_5[xlabel="false"];
 block_5[shape=box label="block_5
-_t7 := 50 < num\n_t8 := sum < 2000\n_t6 := _t7 && _t8\nif true_t6 goto block_7\n_t9 := sum + num\nsum := _t9\n_t10 := num - 1\nnum := _t10\n"];
-block_5 -> block_7[xlabel="true"];
-block_7[shape=box label="block_7
-call print sum\n"];
-block_7 -> block_6[xlabel="true"];
-block_6[shape=box label="block_6
-"];
-block_5 -> block_8[xlabel="false"];
-block_8[shape=box label="block_8
-call print num\n"];
-block_8 -> block_6[xlabel="true"];
-block_6[shape=box label="block_6
-"];
-}
-subgraph "clusterSumUtility" {
-label = "SumUtility";
-block_1[shape=box label="block_1
-_t1 := new Test\n_t0 := call _t1.Sum(100)\ncall print _t0\n"];
+_t9 := num - 1\n_t7 := call _t8.Sum0x55d950047cd0\n_t6 := num + _t7\nsum := _t6\n"];
+block_5 -> block_3[xlabel="true"];
+block_3[shape=box label="block_3
+return sum\n"];
 }
 }

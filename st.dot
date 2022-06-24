@@ -5,7 +5,6 @@ labelloc="t";
 node [shape=rect, fontname=Arial, width=5];
 
 n0 [label=<<U><B>Program</B></U><BR/><BR/>
-name: Test; record: Class; type: Test<BR/>
 name: SumUtility; record: Class; type: SumUtility<BR/>
 >];
 n0 -- n1;
@@ -16,15 +15,5 @@ name: this; record: Variable; type: SumUtility<BR/>
 n1 -- n2;
 n2 [label=<<U><B>Method: main</B></U><BR/><BR/>
 name: a; record: Parameter; type: String[]<BR/>
->];
-n0 -- n3;
-n3 [label=<<U><B>Class: Test</B></U><BR/><BR/>
-name: Sum; record: Method; type: int<BR/>
-name: this; record: Variable; type: Test<BR/>
->];
-n3 -- n4;
-n4 [label=<<U><B>Method: Sum</B></U><BR/><BR/>
-name: sum; record: Variable; type: int<BR/>
-name: num; record: Parameter; type: int<BR/>
 >];
 }

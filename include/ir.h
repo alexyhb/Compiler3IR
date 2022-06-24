@@ -3,6 +3,8 @@
 #include <iostream>
 #include <cstdlib>
 #include <fstream>
+#include <list>
+#include <vector> 
 namespace ir{
     
 class Address {
@@ -135,11 +137,18 @@ public:
 
   
 };
+class ParamListIr: public ThreeAddressCode{
+public:
+std::vector<Address*> resultlist;
+ParamListIr(std::vector<Address*> resultlist);
+void write(std::ostream &stream) const;
+void genByteCode(std::ostream &stream) const;
 
+};
 class MethodCallIr : public ThreeAddressCode {
 public:
-  Address *params;
-  MethodCallIr(Address *result, Address *left, Address *right,Address *params);
+  ParamListIr *params;
+  MethodCallIr(Address *result, Address *left, Address *right,ParamListIr *params);
   MethodCallIr(Address *result, Address *left,Address *right);
   void write(std::ostream &stream) const;
   void genByteCode(std::ostream &stream) const;
@@ -181,10 +190,8 @@ public:
   PrintCallIr(Address *target);
   void write(std::ostream &stream) const;
   void genByteCode(std::ostream &stream) const;
-
- 
-  
-  
 };
+
+
 } // namespace IR
 #endif

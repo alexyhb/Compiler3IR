@@ -6,7 +6,7 @@ ElseStatement::ElseStatement(string t, string v) : Node(std::move(t), std::move(
 
 void* ElseStatement::genIR(BasicBlock *currentBlock)
 {
-    LOG_INFO("ELSE statment");
+  
     return (void*)children.at(0)->genIR(currentBlock);
 
     // Address* result = Address::getAddressFromType();

@@ -62,7 +62,7 @@ void BasicBlock::write(std::ostream &stream, std::map<long, bool> &visited) cons
   stream << "\"];" << std::endl;
 
   if (this->positive_branch != nullptr) {
-   LOG_INFO("here");
+   //LOG_INFO("here");
     stream << this->identifier<< " -> " << this->positive_branch->identifier << "[xlabel=\"true\"];" << std::endl;
     this->positive_branch->write(stream, visited);
   }
@@ -84,6 +84,13 @@ void BasicBlock::genByteCode(std::ostream &stream,std::map<long, bool> &visited)
     code->genByteCode(stream);
     
 
+  }
+}
+BasicBlock* BasicBlock::findJoinBlock(BasicBlock *BB){
+  if(BB->negative_branch==nullptr && BB->positive_branch==nullptr){
+    return BB;
+  }else{
+    return BB->positive_branch->findJoinBlock(BB->positive_branch);
   }
 }
 ControlFlowGraph::ControlFlowGraph() {

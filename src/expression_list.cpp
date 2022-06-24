@@ -1,4 +1,5 @@
 #include "expression_list.h"
+#include <vector> 
 using std::string;
 
 ExpressionList::ExpressionList() : Node() {}
@@ -14,16 +15,22 @@ std::optional<string> ExpressionList::checkSemantics() {
     return parameter_type_list;
 }
 void* ExpressionList::genIR(BasicBlock* BB) {
-    LOG_INFO("??????????????????????????????????????ExpressionList override the GENIR, value="<<value<<"type:"<<type<< "children size"<< children.size());
     if(children.size()==1){
             Address* result =(Address*) children.at(0)->genIR(BB);
 
         return (void*) result;
     }
-     for(auto &child: children){
-         child->genIR(BB);
-         
+    else{
+
+    std::vector<Address*> addressList;
+    for(auto &child: children){
+         Address* result=(Address*)child->genIR(BB);
+         addressList.push_back(result);
  //   LOG_INFO("??????????????????????????????????????~~~~~~~~~~~~~~~~~~~~~ExpressionList done");
-     }
-  
+    }
+    LOG_INFO(addressList.size());
+    ThreeAddressCode *in=new ParamListIr(addressList);
+    BB->add_code(in);
+    return (void*)in;
+    }
 }

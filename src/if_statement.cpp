@@ -21,12 +21,12 @@ std::optional<string> IfStatement::checkSemantics() {
 
 void* IfStatement::genIR(BasicBlock *currentBlock)
 {
-    LOG_INFO("IF statment");
+    // LOG_INFO("IF statment");
      if(currentBlock->positive_branch==nullptr){
-        LOG_INFO("? pos branch");
+        // LOG_INFO("? pos branch");
     }    
     if(currentBlock->negative_branch==nullptr){
-        LOG_INFO("?neg branch");
+        // LOG_INFO("?neg branch");
     }
     Address *condition=(Address*)children.at(0)->genIR(currentBlock);
     //Address* result = Address::getAddressFromType(type,value);
@@ -41,15 +41,15 @@ void* IfStatement::genIR(BasicBlock *currentBlock)
     // ThreeAddressCode *in2=new UnconditionalJumpIr(falseAddress);
     currentBlock->set_condition(in);
     if(currentBlock->positive_branch==nullptr){
-        LOG_INFO("fail set pos branch");
+        // LOG_INFO("fail set pos branch");
     }else{
-        LOG_INFO("success set pos branch");
+        // LOG_INFO("success set pos branch");
 
     }
     if(currentBlock->negative_branch==nullptr){
-        LOG_INFO("fail set neg branch");
+        // LOG_INFO("fail set neg branch");
     }else{
-        LOG_INFO("success set neg branch");
+        // LOG_INFO("success set neg branch");
 
     }
     currentBlock->add_code(in);

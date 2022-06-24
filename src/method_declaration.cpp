@@ -62,9 +62,9 @@ std::optional<string> MethodDeclaration::checkSemantics() {
 void* MethodDeclaration::genIR(std::map<std::string ,ControlFlowGraph*> &cfgs)
 {
      string scope_name = MethodDeclaration::st.getScopeTitle();
-     LOG_INFO(scope_name<<" " <<children.at(1)->getValue());
+     //LOG_INFO(scope_name<<" " <<children.at(1)->getValue());
     ControlFlowGraph * controlFlowGraph = new ControlFlowGraph();
-     LOG_INFO("!!!!!!!!!!!!!"<<children.at(0)->getValue());
+     //LOG_INFO("!!!!!!!!!!!!!"<<children.at(0)->getValue());
     cfgs[children.at(1)->getValue()] = controlFlowGraph;
     for(auto &child: children){
         child->genIR(controlFlowGraph->entry_point);
