@@ -20,15 +20,19 @@ std::optional<string> WhileStatement::checkSemantics() {
 }
 void* WhileStatement::genIR(BasicBlock *currentBlock)
 {
-    BasicBlock* headerBlock = new BasicBlock();
-    children.at(0)->genIR(headerBlock);
-    BasicBlock* bodayBlock = new BasicBlock();
-    children.at(1)->genIR(bodayBlock);
     BasicBlock* jumpBrunch = new BasicBlock();
+    BasicBlock* headerBlock = new BasicBlock(jumpBrunch);
+    BasicBlock* bodayBlock = new BasicBlock(jumpBrunch);
+    Address *condition=(Address*)children.at(0)->genIR(currentBlock);
+    ThreeAddressCode *in=new ConditionalJumpIr(condition,bodayBlock->identifier);
+    headerBlock->add_code(in);
+    Address* trueAddress = (Address*)children.at(1)->genIR(bodayBlock);
 
     headerBlock->positive_branch = bodayBlock;
-    headerBlock->negative_branch = jumpBrunch;
-    bodayBlock->positive_branch = jumpBrunch;
     currentBlock->positive_branch = headerBlock;
+
+   
+    
+
     return (void*)jumpBrunch;
 }

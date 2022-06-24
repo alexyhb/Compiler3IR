@@ -168,7 +168,8 @@ public:
 
 class ConditionalJumpIr : public ThreeAddressCode {
 public:
-  ConditionalJumpIr(Address *condition, Address *target);
+  std::string falseBranchIdentify;
+  ConditionalJumpIr(Address *condition, std::string falseBranchIdentify);
   void write(std::ostream &stream) const;
   void genByteCode(std::ostream &stream) const;
 

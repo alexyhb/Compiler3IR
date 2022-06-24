@@ -106,15 +106,15 @@ int main(int argc, char *argv[]) {
     // gen->generateCode();
     // return EXIT_SUCCESS;
 
-    std::ofstream bytecode_stream;
-    LOG_INFO("BYTE START");
+    // std::ofstream bytecode_stream;
+    // LOG_INFO("BYTE START");
 
-    bytecode_stream.open("out.class", std::ios::out);
-    irGen.write_bytecode(bytecode_stream);
-    bytecode_stream.close();
-    LOG_INFO("BYTE END");
+    // bytecode_stream.open("out.class", std::ios::out);
+    // irGen.write_bytecode(bytecode_stream);
+    // bytecode_stream.close();
+    // LOG_INFO("BYTE END");
 
 
-    VM *vm1=new VM();
-    vm1->translate();
+    // VM *vm1=new VM();
+    // vm1->translate();
 }

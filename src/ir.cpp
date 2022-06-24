@@ -354,14 +354,14 @@ void UnconditionalJumpIr::write(std::ostream &stream) const
   LOG_INFO("UnconditionalJumpIr SU");
 }
 
-ConditionalJumpIr::ConditionalJumpIr(Address *condition, Address *target)
-    : ThreeAddressCode(condition, target)
+ConditionalJumpIr::ConditionalJumpIr(Address *condition, std::string falseBranchIdentify)
+    : ThreeAddressCode(condition,nullptr),falseBranchIdentify(falseBranchIdentify)
 {
 }
 
 void ConditionalJumpIr::write(std::ostream &stream) const
 {
-  stream << "iffalse " << this->left << " goto " << this->right;
+  stream << "if true" << this->left << " goto " << this->falseBranchIdentify;
   LOG_INFO("ConditionalJumpIr SU");
 }
 

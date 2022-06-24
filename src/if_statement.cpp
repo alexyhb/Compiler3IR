@@ -22,21 +22,37 @@ std::optional<string> IfStatement::checkSemantics() {
 void* IfStatement::genIR(BasicBlock *currentBlock)
 {
     LOG_INFO("IF statment");
+     if(currentBlock->positive_branch==nullptr){
+        LOG_INFO("? pos branch");
+    }    
+    if(currentBlock->negative_branch==nullptr){
+        LOG_INFO("?neg branch");
+    }
     Address *condition=(Address*)children.at(0)->genIR(currentBlock);
     //Address* result = Address::getAddressFromType(type,value);
-    BasicBlock* trueBrunch = new BasicBlock();
-    Address* trueAddress = (Address*)children.at(1)->genIR(trueBrunch);
-    BasicBlock* falseBrunch = new BasicBlock();
-    Address* falseAddress = (Address*)children.at(2)->genIR(falseBrunch);
     BasicBlock* jumpBrunch = new BasicBlock();
-    trueBrunch->positive_branch = jumpBrunch;
-    falseBrunch->positive_branch = jumpBrunch;
+    BasicBlock* trueBrunch = new BasicBlock(jumpBrunch);
+    Address* trueAddress = (Address*)children.at(1)->genIR(trueBrunch);
+    BasicBlock* falseBrunch = new BasicBlock(jumpBrunch);
+    Address* falseAddress = (Address*)children.at(2)->genIR(falseBrunch);
     currentBlock->positive_branch = trueBrunch;
     currentBlock->negative_branch = falseBrunch;
-    ThreeAddressCode *in=new ConditionalJumpIr(condition,trueAddress);
-    ThreeAddressCode *in2=new UnconditionalJumpIr(falseAddress);
-    
+    ThreeAddressCode *in=new ConditionalJumpIr(condition,trueBrunch->identifier);
+    // ThreeAddressCode *in2=new UnconditionalJumpIr(falseAddress);
+    currentBlock->set_condition(in);
+    if(currentBlock->positive_branch==nullptr){
+        LOG_INFO("fail set pos branch");
+    }else{
+        LOG_INFO("success set pos branch");
+
+    }
+    if(currentBlock->negative_branch==nullptr){
+        LOG_INFO("fail set neg branch");
+    }else{
+        LOG_INFO("success set neg branch");
+
+    }
     currentBlock->add_code(in);
-    currentBlock->add_code(in2);
+    //currentBlock->add_code(in2);
     return (void*)jumpBrunch;
 }
